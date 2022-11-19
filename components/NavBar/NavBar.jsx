@@ -14,9 +14,8 @@ export default function NavBar () {
           className="w-[90px] h-[90px]"
           />    
         </div>
-        {/* <span className="flex items-center">Título de prueba</span> */}
         <div className= "flex flex-nowrap h-50 items-center ml-3">
-          <ul className=" bg-black md:bg-white flex flex-nowrap space-x-4"  >
+          <ul className=" flex flex-nowrap space-x-4"  >
             {categories.map(c => {
               return(
                 <li className=" text-black px-3 py-2 font-medium h-15 rounded-md " key={c}>{c}</li>
