@@ -2,6 +2,7 @@ import Head from "next/head";
 import TopNewSection from "../components/TopNewSection/TopNewSection";
 import NavBar from "../components/NavBar/NavBar"
 import TrendingSection from "../components/TrendingSection/TrendingSection"
+import ImportantNews from "../components/RelevantsNews/Relevants"
 
 
 
@@ -12,8 +13,9 @@ export default function Home () {
         <title>Newspaper | Home</title>
       </Head>
       <NavBar />
-      <TopNewSection />
-      <TrendingSection/>
+      {/* <TopNewSection /> */}
+      {/* <TrendingSection/> */}
+      <ImportantNews/>
     </>
   )
 }
