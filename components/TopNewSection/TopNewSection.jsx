@@ -46,13 +46,13 @@ const TopNewSection = () => {
         <div>
           <Tag title="Recientes"/>
         </div>
-       <div className="divide-y flex flex-col gap-2">
+      <div className="divide-y flex flex-col gap-2">
           {
             RecentNews.length !== 0 && RecentNews.map((p) => {
-              return <ListPostCard title={p.title} image={p.image} />
+              return <ListPostCard key={p.title} title={p.title} image={p.image} />
             })
           }
-       </div>
+        </div>
       </div>
     </div>
   )
