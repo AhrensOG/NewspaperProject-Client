@@ -29,11 +29,11 @@ const TopNewSection = () => {
     <div className="w-full flex p-4 pr-4 pl-4 md:pr-10 md:pl-10 lg:pr-16 lg:pl-16">
       <div className="flex basis-[75%]">
         <div className="basis-[65%]">
-          <PrincipalPostCard title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image}  />
+          <PrincipalPostCard title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image} category={ TodayNews[0]?.categories[0]?.name} />
         </div>
         <div className="basis-[35%] divide-y pl-4 pr-4">
-          <CenterListPostCard title={TodayNews[1]?.title} image={TodayNews[1]?.image}  />
-          <CenterListPostCard title={TodayNews[2]?.title} image={TodayNews[2]?.image}  />
+          <CenterListPostCard title={TodayNews[1]?.title} image={TodayNews[1]?.image} category={ TodayNews[1]?.categories[0]?.name} />
+          <CenterListPostCard title={TodayNews[2]?.title} image={TodayNews[2]?.image} category={ TodayNews[2]?.categories[0]?.name} />
         </div>
       </div>
       <div className="basis-[25%] divide-y flex flex-col gap-2">
