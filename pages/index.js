@@ -7,13 +7,13 @@ import TrendingSection from "../components/TrendingSection/TrendingSection"
 
 export default function Home () {
   return(
-    <>
+    <div className="bg-slate-50">
       <Head>
         <title>Newspaper | Home</title>
       </Head>
       <NavBar />
       <TopNewSection />
       <TrendingSection/>
-    </>
+    </div>
   )
 }
