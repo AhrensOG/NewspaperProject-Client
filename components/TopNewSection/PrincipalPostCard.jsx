@@ -1,9 +1,8 @@
 import Image from 'next/image'
 
 const PrincipalPostCard = ({ title, subTitle = false, image, category }) => {
-  console.log(category)
   return (
-    <div className='pb-1 pt-3 ml-1 mr-1'>
+    <div className='pb-1 pt-3 mr-1'>
       <div className='pb-1 hover:cursor-pointer'>
         <img className='w-full h-[250px] lg:h-[300px]' src={image} alt='PostImage'/>
       </div>
