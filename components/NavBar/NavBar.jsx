@@ -1,30 +1,51 @@
 import Image from "next/image"
 import logo from '../../public/logo.png'
+import { SlMenu } from "react-icons/sl";
+import { IconContext } from "react-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 export default function NavBar () {
-  const categories = ["politics", "world", "climate", "siences&tech" ] 
+  const categories = ["Politica", "Deporte", "Clima", "Ciencia" ] 
+  
+  // const [categories, setCategories] = useState([])
+
+  // useEffect(()=>{
+  //   const getCategories = async () => {
+  //     const res = await axios.get(`${SERVER_URL}/categories`)
+  //     setCategories(res.data)
+  //   }
+  //   getCategories()
+  // })
 
   return (
-    <nav className="flex flex-row w-full bg-slate-50">
-      <div  className="flex basis-1/2  flex-row">
-        <div>
+    <nav className="flex flex-row w-full bg-slate-50 shadow-md shadow-slate-300 mb-6">
+      <div  className="flex basis-[60%]  flex-row">
+        <div className="basis-[25%] items-center flex flex-row">
+          <IconContext.Provider value={{ color: "black", className: "w-[20px] h-[20px]" }}>
+            <div className="basis-[30%] pl-6 hover:cursor-pointer">
+              <SlMenu/>
+            </div>
+          </IconContext.Provider>
           <Image
             src={logo}
             alt='picture for test'
-          className="w-[90px] h-[90px]"
+          className="w-full lg:h-[100px] md:h-[70px] lg:pl-1 md:pl-4 basis-[60%]"
           />    
         </div>
-        <div className= "flex flex-nowrap h-50 items-center ml-3">
-          <ul className=" flex flex-nowrap space-x-4"  >
+        <div className= "basis-[75%] w-full flex flex-nowrap h-50 items-center justify-start">
+          <ul className=" flex flex-nowrap h-full items-center w-full"  >
             {categories.map(c => {
               return(
-                <li className=" text-black px-3 py-2 font-medium h-15 rounded-md " key={c}>{c}</li>
+                <li className="lg:basis-[15%] text-start text-base font-roboto uppercase text-black lg:pl-0 lg:pr-3 md:pl-4 md:text-sm py-2 font-medium h-15 hover:cursor-pointer" key={c}>{c}</li>
             )
             })}
           </ul>
         </div>
       </div>
-      <div className="flex space-x-4 basis-1/2 items-center justify-end mr-12">
+      <div className="flex space-x-4 basis-[40%] items-center justify-end md:">
         <div className="flex flex-row space-x-4">
           <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Ingresar</button>      
           <button className="  text-black px-3 py-2 font-medium h-15 rounded-md border-r-slate-200" >Registrarse</button>      
