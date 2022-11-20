@@ -17,8 +17,8 @@ export default function TrendingSection ({title, image, type}) {
       <div>
         <Tag title={'Tendencias'}/>
       </div>
-      <div className="items-center grid grid-cols-4 w-full pt-1 pb-[2rem]" >
-      {trending.length !== 0 && trending.map ((e) => {
+      <div className="items-center grid grid-cols-4 w-full pt-[1.5rem] pb-[2rem]" >
+      {trending?.length !== 0 && trending.map ((e) => {
         const category = e.categories.length === 0 ? '' : e.categories[0].name
         return(
           <Card key={e.title} title={e.title} image={e.image} category={category} />
