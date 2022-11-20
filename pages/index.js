@@ -3,6 +3,7 @@ import TopNewSection from "../components/TopNewSection/TopNewSection";
 import NavBar from "../components/NavBar/NavBar"
 import TrendingSection from "../components/TrendingSection/TrendingSection"
 import ImportantNews from "../components/RelevantsNews/Relevants"
+import Footer from "../components/Footer/Footer";
 
 
 
@@ -15,7 +16,8 @@ export default function Home () {
       <NavBar />
       {/* <TopNewSection /> */}
       {/* <TrendingSection/> */}
-      <ImportantNews/>
+      {/* <ImportantNews/> */}
+      <Footer/>
     </>
   )
 }
