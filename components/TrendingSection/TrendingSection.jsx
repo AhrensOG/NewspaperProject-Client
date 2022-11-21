@@ -1,13 +1,15 @@
 const axios = require("axios")
 import {useEffect, useState} from 'react'
 import Tag from '../Tag'
-
 import Card from "./Cards"
+
+
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 export default function TrendingSection ({title, image, type}) {
   const [trending, setTrending] = useState([])
   useEffect(() => { async function getAll ()  {
-    const data = await axios.get("http://localhost:3001/post?tag=Tendencias&limit=4")
+    const data = await axios.get(`${SERVER_URL}/post?tag=Tendencias&limit=4`)
     setTrending(data.data)
   }
   getAll()
