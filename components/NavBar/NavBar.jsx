@@ -38,9 +38,9 @@ export default function NavBar () {
         </div>
         <div className= "basis-[75%] w-full flex flex-nowrap h-50 items-center justify-start">
           <div className=" flex flex-nowrap h-fdivl items-center w-full"  >
-            {categories.map(c => {
+            {categories?.map(c => {
               return(
-                <Link href={`/categorias/${c}`}>
+                <Link key={c} href={`/categorias/${c}`}>
                   <span className="lg:basis-[15%] text-start text-base font-roboto uppercase text-black lg:pl-0 lg:pr-3 md:pl-4 md:text-sm py-2 font-medium h-15 hover:cursor-pointer" key={c}>{c}</span>
                 </Link>
             )

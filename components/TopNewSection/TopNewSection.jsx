@@ -30,21 +30,21 @@ const TopNewSection = () => {
     <div className="w-full flex p-4 pr-4 pl-4 md:pr-10 md:pl-10 lg:pr-16 lg:pl-16">
       <div className="basis-[75%]">
         <div>
-          <Tag/>
+          <Tag key={'Selecciones de hoy'} title="Selecciones de hoy"/>
         </div>
         <div className="flex">
           <div className="basis-[65%]">
-            <PrincipalPostCard id={TodayNews[0]?.id} tag={TodayNews[0]?.tag?.name} title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image} category={ TodayNews[0]?.categories[0]?.name} />
+            <PrincipalPostCard key={TodayNews[0]?.id} id={TodayNews[0]?.id} tag={TodayNews[0]?.tag?.name} title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image} category={ TodayNews[0]?.categories[0]?.name} />
           </div>
           <div className="basis-[35%] divide-y pl-4 pr-4">
-            <CenterListPostCard id={TodayNews[1]?.id} tag={TodayNews[1]?.tag?.name} title={TodayNews[1]?.title} image={TodayNews[1]?.image} category={ TodayNews[1]?.categories[0]?.name} />
-            <CenterListPostCard id={TodayNews[2]?.id} tag={TodayNews[2]?.tag?.name} title={TodayNews[2]?.title} image={TodayNews[2]?.image} category={ TodayNews[2]?.categories[0]?.name} />
+            <CenterListPostCard key={TodayNews[1]?.id} id={TodayNews[1]?.id} tag={TodayNews[1]?.tag?.name} title={TodayNews[1]?.title} image={TodayNews[1]?.image} category={ TodayNews[1]?.categories[0]?.name} />
+            <CenterListPostCard key={TodayNews[2]?.id} id={TodayNews[2]?.id} tag={TodayNews[2]?.tag?.name} title={TodayNews[2]?.title} image={TodayNews[2]?.image} category={ TodayNews[2]?.categories[0]?.name} />
           </div>
         </div>
       </div>
       <div className="basis-[25%]">
         <div>
-          <Tag title="Recientes"/>
+          <Tag key={'Recientes'} title="Recientes"/>
         </div>
       <div className="divide-y flex flex-col gap-2">
           {
