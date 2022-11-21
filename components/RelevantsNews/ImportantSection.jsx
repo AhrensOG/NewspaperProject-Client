@@ -38,7 +38,7 @@ export default function ImportantSection () {
     <div className="lg:pl-[4rem] lg:pr-[4rem] md:pl-[2.5rem] md:pr-[2.5rem] pb-16">
       {/* TAG SECTION */}
       <div className="pt-[.5rem] pb-[1.5rem]">
-        <Tag title="Importante"/>
+        <Tag key={'Importante'} title="Importante"/>
       </div>
       {/* UPPER SECTION */}
       <div className="flex flex-row gap-10 pt-[1rem]">
@@ -61,7 +61,7 @@ export default function ImportantSection () {
         </div>
         {/* PRIMARY POST */}
         <div className="basis-[68%]">
-          <PrincipalImportantNewPost id={primaryPost[0]?.id} tag={primaryPost[0]?.tag.name} title={primaryPost[0]?.title} image={primaryPost[0]?.image} description={primaryPost[0]?.description} category={primaryPost[0]?.category}/>
+          <PrincipalImportantNewPost key={primaryPost[0]?.id} id={primaryPost[0]?.id} tag={primaryPost[0]?.tag.name} title={primaryPost[0]?.title} image={primaryPost[0]?.image} description={primaryPost[0]?.description} category={primaryPost[0]?.category}/>
         </div>
 
       </div>
@@ -86,7 +86,7 @@ export default function ImportantSection () {
         </div>
         {/* SECONDARY POST */}
         <div className="basis-[68%]">
-          <PrincipalImportantNewPost id={secondaryPost[0]?.id} tag={secondaryPost[0]?.tag.name} title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
+          <PrincipalImportantNewPost key={secondaryPost[0]?.id} id={secondaryPost[0]?.id} tag={secondaryPost[0]?.tag.name} title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
         </div>
 
       </div>
