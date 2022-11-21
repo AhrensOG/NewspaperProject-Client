@@ -5,6 +5,8 @@ import Card from "../../components/TrendingSection/Cards";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import { useRouter } from 'next/router'
+import NextNProgress from "nextjs-progressbar";
+import Loader from "../../components/Loader";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -30,9 +32,10 @@ export default function Detail () {
     <div className=" bg-slate-50 ">
       <NavBar/>
       {
-        !id && Object.keys(news).length === 0 && related.length === 0
-        ? <div>CARGANDO</div>
+        !id || Object.keys(news).length === 0 || related.length === 0
+        ? <Loader/>
         : <div className="pb-[120px]">
+            <NextNProgress color="#3b82f1"/>
             <div>
                 <div className="flex pl-20">
                   <div className="pt-14">
