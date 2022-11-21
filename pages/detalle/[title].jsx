@@ -62,8 +62,8 @@ export default function Detail () {
               <div className="text-4xl py-6">
                 <h2 className="font-bold">{news?.subTitle}</h2>
               </div>
-              <div>
-                <h3>{news?.description}</h3>
+              <div className="pb-16">
+                <h3 className="text-2xl leading-[3rem]">{news?.description}</h3>
               </div>
               <span className="text-2xl italic font-semibold">Relacionados:</span> <br/> <br/>
               <div className="flex">
