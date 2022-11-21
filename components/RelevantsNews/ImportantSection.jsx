@@ -5,6 +5,8 @@ import Card from "./Card";
 import Tag from "../Tag"
 import PrincipalImportantNewPost from "./PrincipalImportantNewPost";
 
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
+
 export default function ImportantSection () {
 
   const [news, setNews] = useState([]);
@@ -26,7 +28,7 @@ export default function ImportantSection () {
 
   useEffect(()=> {
     const getImportants = async () => {
-      const json = await axios.get("http://localhost:3001/post?tag=Importante&limit=14")
+      const json = await axios.get(`${SERVER_URL}/post?tag=Importante&limit=14`)
       setNews(json.data)
     }
     getImportants()
@@ -84,7 +86,7 @@ export default function ImportantSection () {
         </div>
         {/* SECONDARY POST */}
         <div className="basis-[68%]">
-          <PrincipalImportantNewPost id={primaryPost[0]?.id} tag={secondaryPost[0]?.tag.name} title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
+          <PrincipalImportantNewPost id={secondaryPost[0]?.id} tag={secondaryPost[0]?.tag.name} title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
         </div>
 
       </div>
