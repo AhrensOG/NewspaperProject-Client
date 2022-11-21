@@ -17,7 +17,7 @@ export default function TrendingSection ({title, image, type}) {
   return (
     <div className='lg:pl-[4rem] lg:pr-[4rem] lg:pt-[1.5rem] md:pt-[1rem] md:pl-[2.5rem] md:pr-[2.5rem]'>
       <div>
-        <Tag title={'Tendencias'}/>
+        <Tag key={'Tendencias'} title={'Tendencias'}/>
       </div>
       <div className="items-center grid grid-cols-4 w-full pt-[1.5rem] pb-[2rem]" >
       {trending?.length !== 0 && trending.map ((e) => {
