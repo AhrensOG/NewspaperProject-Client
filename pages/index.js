@@ -1,10 +1,23 @@
-export default function Home() {
+import Head from "next/head";
+import TopNewSection from "../components/TopNewSection/TopNewSection";
+import NavBar from "../components/NavBar/NavBar"
+import TrendingSection from "../components/TrendingSection/TrendingSection"
+import ImportantSection from "../components/RelevantsNews/ImportantSection";
+import Footer from "../components/Footer/Footer";
 
-  return (
-    <div>
-        <h1 className='text-6xl text-center p-2'>
-          Welcome to <a className='hover:underline text-[#0070f3]' href="https://nextjs.org">Next.js!</a>
-        </h1>
+
+
+export default function Home () {
+  return(
+    <div className="bg-slate-50">
+      <Head>
+        <title>Newspaper | Home</title>
+      </Head>
+      <NavBar />
+      <TopNewSection />
+      <TrendingSection/>
+      <ImportantSection/>
+      <Footer/>
     </div>
   )
 }
