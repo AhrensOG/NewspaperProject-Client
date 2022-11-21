@@ -42,7 +42,7 @@ export default function ImportantSection () {
       <div className="flex flex-row gap-10 pt-[1rem]">
         {
           upperSection?.length !== 0 && upperSection?.map(( p ) => {
-          return <Card key={p.title} image={p.image} title={p.title} />
+          return <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
         }) 
         }
       </div>
@@ -53,13 +53,13 @@ export default function ImportantSection () {
         <div className="basis-[32%]">
           {
             leftColumnSection?.length !== 0 && leftColumnSection?.map(( p ) => {
-              return <div className="pb-6"><Card key={p.title} image={p.image} title={p.title} /></div>
+              return <div className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
             })
           }
         </div>
         {/* PRIMARY POST */}
         <div className="basis-[68%]">
-          <PrincipalImportantNewPost title={primaryPost[0]?.title} image={primaryPost[0]?.image} description={primaryPost[0]?.description} category={primaryPost[0]?.category}/>
+          <PrincipalImportantNewPost id={primaryPost[0]?.id} tag={primaryPost[0]?.tag.name} title={primaryPost[0]?.title} image={primaryPost[0]?.image} description={primaryPost[0]?.description} category={primaryPost[0]?.category}/>
         </div>
 
       </div>
@@ -67,7 +67,7 @@ export default function ImportantSection () {
       <div className="flex flex-row gap-10 pt-[1rem]">
         {
           middleSection?.length !== 0 && middleSection?.map(( p ) => {
-          return <Card key={p.title} image={p.image} title={p.title} />
+          return <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
         }) 
         }
       </div>
@@ -78,13 +78,13 @@ export default function ImportantSection () {
         <div className="basis-[32%]">
           {
             rightColumnSection?.length !== 0 && rightColumnSection?.map(( p ) => {
-              return <div className="pb-6"><Card key={p.title} image={p.image} title={p.title} /></div>
+              return <div className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
             })
           }
         </div>
         {/* SECONDARY POST */}
         <div className="basis-[68%]">
-          <PrincipalImportantNewPost title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
+          <PrincipalImportantNewPost id={primaryPost[0]?.id} tag={secondaryPost[0]?.tag.name} title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
         </div>
 
       </div>

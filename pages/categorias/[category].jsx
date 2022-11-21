@@ -30,7 +30,7 @@ const Category = () => {
             <div className='grid grid-cols-3 gap-x-6 gap-y-2 pt-[1rem]'>
               {
                 news.length && news.map(( p ) => {
-                  return <Card image={p.image} title={p.title} />
+                  return <Card id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
                 })
               }
             </div>

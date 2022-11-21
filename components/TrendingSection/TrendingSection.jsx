@@ -21,7 +21,7 @@ export default function TrendingSection ({title, image, type}) {
       {trending?.length !== 0 && trending.map ((e) => {
         const category = e.categories.length === 0 ? '' : e.categories[0].name
         return(
-          <Card key={e.title} title={e.title} image={e.image} category={category} />
+          <Card key={e.title} id={e.id} tag={e.tag.name} title={e.title} image={e.image} category={category} />
         )
       })}
       </div>
