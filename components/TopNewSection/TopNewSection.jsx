@@ -34,11 +34,11 @@ const TopNewSection = () => {
         </div>
         <div className="flex">
           <div className="basis-[65%]">
-            <PrincipalPostCard title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image} category={ TodayNews[0]?.categories[0]?.name} />
+            <PrincipalPostCard id={TodayNews[0]?.id} tag={TodayNews[0]?.tag?.name} title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image} category={ TodayNews[0]?.categories[0]?.name} />
           </div>
           <div className="basis-[35%] divide-y pl-4 pr-4">
-            <CenterListPostCard title={TodayNews[1]?.title} image={TodayNews[1]?.image} category={ TodayNews[1]?.categories[0]?.name} />
-            <CenterListPostCard title={TodayNews[2]?.title} image={TodayNews[2]?.image} category={ TodayNews[2]?.categories[0]?.name} />
+            <CenterListPostCard id={TodayNews[1]?.id} tag={TodayNews[1]?.tag?.name} title={TodayNews[1]?.title} image={TodayNews[1]?.image} category={ TodayNews[1]?.categories[0]?.name} />
+            <CenterListPostCard id={TodayNews[2]?.id} tag={TodayNews[2]?.tag?.name} title={TodayNews[2]?.title} image={TodayNews[2]?.image} category={ TodayNews[2]?.categories[0]?.name} />
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ const TopNewSection = () => {
       <div className="divide-y flex flex-col gap-2">
           {
             RecentNews.length !== 0 && RecentNews.map((p) => {
-              return <ListPostCard key={p.title} title={p.title} image={p.image} />
+              return <ListPostCard id={p.id} tag={p.tag?.name} key={p.title} title={p.title} image={p.image} />
             })
           }
         </div>

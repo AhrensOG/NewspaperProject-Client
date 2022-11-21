@@ -11,28 +11,26 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 export default function Detail () {
 
   const router = useRouter();
-  const { title } = router.query;
+  const { id, tag } = router.query;
 
   const [related, setRelated] = useState([])
   const [news, setNews] = useState({})
 
   useEffect(() => {
     const getRelateds = async () =>{
-      const data = await axios.get(`${SERVER_URL}/post?tag=${news.tag?.name}&limit=4`)
-      const json = await axios.get(`${SERVER_URL}/post/detail?title=${title}`)
-      setRelated(data.data)
+      const json = await axios.get(`${SERVER_URL}/post/detail?id=${id}`)
       setNews(json.data)
+      const data = await axios.get(`${SERVER_URL}/post?tag=${tag}&limit=4`)
+      setRelated(data.data)
     } 
     getRelateds()
-  },[title])
-  // console.log(news?.tag?.name);
-  console.log(news);
+  },[id])
 
   return (
     <div className=" bg-slate-50 ">
       <NavBar/>
       {
-        !title && Object.keys(news).length === 0 && related.length === 0
+        !id && Object.keys(news).length === 0 && related.length === 0
         ? <div>CARGANDO</div>
         : <div className="pb-[120px]">
             <div>
