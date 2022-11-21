@@ -70,7 +70,7 @@ export default function Detail () {
                     {related.map((e) => {
                       return(
                         <div>
-                          <Card title={e.title} image={e.image} category={e.tag.name} boolean={true}/>
+                          <Card id={e.id} tag={e.tag.name} title={e.title} image={e.image} category={e.tag.name} boolean={true}/>
                         </div>
                       )
                     })}
