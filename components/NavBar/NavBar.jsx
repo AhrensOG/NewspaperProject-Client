@@ -5,7 +5,7 @@ export default function NavBar () {
   const categories = ["politics", "world", "climate", "siences&tech" ] 
 
   return (
-    <nav className="flex flex-row w-full bg-slate-50">
+    <nav className="flex flex-row w-full bg-slate-50 border-b-2 border-black">
       <div  className="flex basis-1/2  flex-row">
         <div>
           <Image

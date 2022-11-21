@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         custom: "'Oswald', sans-serif",
-        roboto:"'Roboto Condensed', sans-serif"
+        roboto:"'Roboto Condensed', sans-serif",
+        noto: "'Noto Serif', serif"
       }
     },
   },
