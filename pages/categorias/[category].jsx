@@ -16,12 +16,14 @@ const Category = () => {
   
   useEffect(() => {
     const getData = async () => {
-      const res = await axios.get(`${SERVER_URL}/post/category?name=${category}`)
-      setNews(res.data)
+      if(category) {
+        const res = await axios.get(`${SERVER_URL}/post/category?name=${category}`)
+        setNews(res.data)
+      }
     }
     getData();
   }, [category]);
-
+  console.log(category)
   return (
     <div>
       <NavBar/>

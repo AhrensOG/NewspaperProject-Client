@@ -20,12 +20,15 @@ export default function Detail () {
 
   useEffect(() => {
     const getRelateds = async () =>{
-      const json = await axios.get(`${SERVER_URL}/post/detail?id=${id}`)
-      setNews(json.data)
-      const data = await axios.get(`${SERVER_URL}/post?tag=${tag}&limit=4`)
-      setRelated(data.data)
+      if(id && tag) {
+        const json = await axios.get(`${SERVER_URL}/post/detail?id=${id}`)
+        setNews(json.data)
+        const data = await axios.get(`${SERVER_URL}/post?tag=${tag}&limit=4`)
+        setRelated(data.data)
+      }
     } 
     getRelateds()
+    return () => setNews([])
   },[id])
 
   return (
