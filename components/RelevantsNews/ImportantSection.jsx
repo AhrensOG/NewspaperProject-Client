@@ -33,7 +33,7 @@ export default function ImportantSection () {
   }, [])
 
   return (
-    <div className="lg:pl-[4rem] lg:pr-[4rem] md:pl-[2.5rem] md:pr-[2.5rem]">
+    <div className="lg:pl-[4rem] lg:pr-[4rem] md:pl-[2.5rem] md:pr-[2.5rem] pb-16">
       {/* TAG SECTION */}
       <div className="pt-[.5rem] pb-[1.5rem]">
         <Tag title="Importante"/>
@@ -91,6 +91,4 @@ export default function ImportantSection () {
       
     </div>
   )
-
-
 }
