@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link';
 
 const PrincipalPostCard = ({ title, subTitle = false, image, category, tag, id }) => {
