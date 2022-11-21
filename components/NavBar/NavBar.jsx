@@ -3,6 +3,7 @@ import { IconContext } from "react-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import NextNProgress from "nextjs-progressbar";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -21,6 +22,7 @@ export default function NavBar () {
 
   return (
     <nav className="flex flex-row w-full bg-slate-50 shadow-md shadow-slate-300 mb-6">
+      <NextNProgress color="#3b82f1"/>
       <div  className="flex basis-[60%]  flex-row">
         <div className="basis-[25%] items-center flex flex-row">
           <IconContext.Provider value={{ color: "black", className: "w-[20px] h-[20px]" }}>
