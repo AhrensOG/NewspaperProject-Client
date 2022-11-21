@@ -1,5 +1,3 @@
-import Image from "next/image"
-import logo from '../../public/logo.png'
 import { SlMenu } from "react-icons/sl";
 import { IconContext } from "react-icons";
 import { useEffect, useState } from "react";
@@ -31,23 +29,23 @@ export default function NavBar () {
             </div>
           </IconContext.Provider>
           <Link href={`/`}>
-            <Image
-              src={logo}
+            <img
+              src='/Logo.png'
               alt='picture for test'
             className="w-full lg:h-[100px] md:h-[70px] lg:pl-1 md:pl-4 basis-[60%]"
             />    
           </Link>
         </div>
         <div className= "basis-[75%] w-full flex flex-nowrap h-50 items-center justify-start">
-          <ul className=" flex flex-nowrap h-full items-center w-full"  >
+          <div className=" flex flex-nowrap h-fdivl items-center w-full"  >
             {categories.map(c => {
               return(
                 <Link href={`/categorias/${c}`}>
-                  <li className="lg:basis-[15%] text-start text-base font-roboto uppercase text-black lg:pl-0 lg:pr-3 md:pl-4 md:text-sm py-2 font-medium h-15 hover:cursor-pointer" key={c}>{c}</li>
+                  <span className="lg:basis-[15%] text-start text-base font-roboto uppercase text-black lg:pl-0 lg:pr-3 md:pl-4 md:text-sm py-2 font-medium h-15 hover:cursor-pointer" key={c}>{c}</span>
                 </Link>
             )
             })}
-          </ul>
+          </div>
         </div>
       </div>
       <div className="flex space-x-4 basis-[40%] items-center justify-end md:">
