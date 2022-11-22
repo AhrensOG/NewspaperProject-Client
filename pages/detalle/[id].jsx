@@ -1,12 +1,12 @@
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/Footer";
 import Tag from "../../components/Tag";
-import Card from "../../components/TrendingSection/Cards";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import { useRouter } from 'next/router'
 import NextNProgress from "nextjs-progressbar";
 import Loader from "../../components/Loader";
+import DetailCard from "../../components/Detail/DetailCard";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -41,13 +41,13 @@ export default function Detail () {
             <NextNProgress color="#3b82f1"/>
             <div>
                 <div className="flex pl-20">
-                  <div className="pt-14">
+                  <div className="pt-8">
                     <Tag title={news?.tag?.name}/>
                   </div>
-                  <div className="pt-16 pl-5">
+                  <div className="pt-10 pl-5">
                     <span className="font-mono">Ivix09</span>
                   </div>
-                  <div className="pt-16 pl-5" >
+                  <div className="pt-10 pl-5" >
                     <span className="font-mono">
                       {news?.createdAt}
                     </span>
@@ -55,34 +55,35 @@ export default function Detail () {
                 </div>
             </div>
             <div className="pl-20 pt-4 pr-16">
-                <h1 className="pb-5 text-5xl font-bold font-noto">
+                <h1 className="pb-5 lg:text-7xl md:text-5xl font-bold font-noto">
                   {news?.title}
                 </h1>
                   <div>
-                    <img src={news?.image} alt="detail image" className="w-full h-full"/>
+                    <img src={news?.image} alt="detail image" className="w-full lg:h-[45rem] md:h-[35rem]"/>
                   </div>
             </div>
             <div className="pl-20 pr-24">
               <div className="text-4xl py-6">
-                <h2 className="font-bold">{news?.subTitle}</h2>
+                <h2 className="font-bold lg:text-5xl md:text-3xl">{news?.subTitle}</h2>
               </div>
               <div className="pb-16">
                 <h3 className="text-2xl leading-[3rem]">{news?.description}</h3>
               </div>
-              <span className="text-2xl italic font-semibold">Relacionados:</span> <br/> <br/>
+              <div className="lg:pb-[1rem] md:[1rem] flex">
+                <span className="basis-1/2 text-2xl italic font-semibold">Relacionados:</span>
+                <span className="basis-1/2 text-2xl italic font-semibold">Anuncios:</span>
+              </div>
               <div className="flex">
-                <div className="basis-2/3 flex flex-col">
-                  <div className="list-disc pl-10 text-xl basis-1/4">
-                    {related.map((e) => {
-                      return(
-                        <div>
-                          <Card id={e.id} tag={e.tag.name} title={e.title} image={e.image} category={e.tag.name} boolean={true}/>
-                        </div>
-                      )
-                    })}
-                  </div> 
+                <div className="basis-1/2 flex flex-col">
+                  {related.map((e) => {
+                    return(
+                      <div className="basis-1/4 w-[80%]">
+                        <DetailCard id={e.id} tag={e.tag.name} title={e.title} image={e.image} category={e.tag.name}/>
+                      </div>
+                    )
+                  })}
                 </div>
-                <div className="basis-1/3">
+                <div className="basis-1/2">
                   ADVERSTIMENT
                 </div>
               </div>
