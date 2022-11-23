@@ -5,7 +5,7 @@ const PrincipalPostCard = ({ title, subTitle = false, image, category, tag, id }
     <div className='pb-1 pt-3 mr-1'>
       <div className='pb-1 hover:cursor-pointer'>
         <Link href={`/detalle/${id}?tag=${tag}`}>
-          <img className='w-full h-[250px] lg:h-[300px]' src={image} alt='PostImage'/>
+          <img className='w-full lg:h-[450px]' src={image} alt='PostImage'/>
         </Link>
       </div>
       <div>

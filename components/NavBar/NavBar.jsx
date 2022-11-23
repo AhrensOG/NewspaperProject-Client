@@ -21,22 +21,22 @@ export default function NavBar () {
   // })
 
   return (
-    <nav className="flex flex-row w-full bg-slate-50 shadow-md shadow-slate-300 mb-6">
+    <nav className="flex flex-row w-full bg-slate-50 shadow-md shadow-slate-300">
       <NextNProgress color="#3b82f1"/>
       <div  className="flex basis-[60%]  flex-row">
-        <div className="basis-[25%] items-center flex flex-row">
+        <div className="basis-[10%] items-center flex flex-row">
           <IconContext.Provider value={{ color: "black", className: "w-[20px] h-[20px]" }}>
-            <div className="basis-[30%] pl-6 hover:cursor-pointer">
+            <div className="basis-[100%] pl-6 hover:cursor-pointer">
               <SlMenu/>
             </div>
           </IconContext.Provider>
-          <Link href={`/`}>
+          {/* <Link href={`/`}>
             <img
               src='/Logo.png'
               alt='picture for test'
             className="w-full lg:h-[100px] md:h-[70px] lg:pl-1 md:pl-4 basis-[60%]"
             />    
-          </Link>
+          </Link> */}
         </div>
         <div className= "basis-[75%] w-full flex flex-nowrap h-50 items-center justify-start">
           <div className=" flex flex-nowrap h-fdivl items-center w-full"  >
@@ -52,9 +52,9 @@ export default function NavBar () {
       </div>
       <div className="flex space-x-4 basis-[40%] items-center justify-end md:">
         <div className="flex flex-row space-x-4">
-          <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Ingresar</button>      
-          <button className="  text-black px-3 py-2 font-medium h-15 rounded-md border-r-slate-200" >Registrarse</button>      
-          <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Buscar</button>
+          {/* <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Ingresar</button>      
+          <button className="  text-black px-3 py-2 font-medium h-15 rounded-md border-r-slate-200" >Registrarse</button>       */}
+          <button className=" text-black px-3 pr-6 py-2 font-medium h-15 rounded-md " >Buscar</button>
         </div>
       </div>
     </nav>

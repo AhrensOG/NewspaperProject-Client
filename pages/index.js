@@ -19,6 +19,9 @@ export default function Home () {
       </Head>
       <NextNProgress />
       <NavBar />
+      <div className="flex justify-center py-6">
+        <img src="/Logo.png" alt="IMG" className="lg:h-[130px] lg:w-[350px] m-[-20]" />
+      </div>
       <TopNewSection setLoader={setLoader}/>
       <TrendingSection loader={loader}/>
       <ImportantSection loader={loader}/>
