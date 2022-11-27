@@ -6,6 +6,7 @@ import ImportantSection from "../components/RelevantsNews/ImportantSection";
 import Footer from "../components/Footer/Footer";
 import { useState } from "react";
 import NextNProgress from "nextjs-progressbar";
+import MiddleComponent from "../components/MiddleComponent";
 
 
 
@@ -19,6 +20,7 @@ export default function Home () {
       </Head>
       <NextNProgress />
       <NavBar />
+      <MiddleComponent/>
       <TopNewSection setLoader={setLoader}/>
       <TrendingSection loader={loader}/>
       <ImportantSection loader={loader}/>
