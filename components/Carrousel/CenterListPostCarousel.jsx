@@ -2,11 +2,11 @@ import { Carousel } from "flowbite-react";
 import Link from "next/link";
 import React from "react";
 
-const Carrousel = ({ images, id=false, tag=false }) => {
+const CenterListPostCarousel = ({ images, id=false, tag=false }) => {
   const imagesArray = images.split(" ");
 
   return (
-    <div className="h-56 md:h-[150px] lg:h-[250px]">
+    <div className="sm:h-[180px] md:h-[120px] lg:h-[150px]">
       <Carousel slideInterval={5000}>
         {
           imagesArray?.length &&
@@ -14,7 +14,7 @@ const Carrousel = ({ images, id=false, tag=false }) => {
               return (
                 <Link href={`/detalle/${id}?tag=${tag}`}>
                 <img
-                  className="w-full md:h-[150px] lg:h-[250px] cursor-pointer" 
+                  className="w-full md:h-[120px] lg:h-[150px]" 
                   key={i}
                   src={i}
                   alt="IMG"
@@ -28,4 +28,4 @@ const Carrousel = ({ images, id=false, tag=false }) => {
   );
 };
 
-export default Carrousel;
+export default CenterListPostCarousel;

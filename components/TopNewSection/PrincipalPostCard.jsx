@@ -1,12 +1,11 @@
 import Link from 'next/link';
+import PrincipalPostCarousel from '../Carrousel/PrincipalPostCarousel';
 
 const PrincipalPostCard = ({ title, subTitle = false, image, category, tag, id }) => {
   return (
     <div className='pb-1 pt-3 mr-1'>
       <div className='pb-1 hover:cursor-pointer'>
-        <Link href={`/detalle/${id}?tag=${tag}`}>
-          <img className='w-full h-[250px] lg:h-[300px]' src={image} alt='PostImage'/>
-        </Link>
+        <PrincipalPostCarousel images={image} id={id} tag={tag}/>
       </div>
       <div>
         <span className='text-[15px] text-slate-600 font-mono tracking-[0.1rem]'>{category}</span>

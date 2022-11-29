@@ -1,13 +1,12 @@
 import Link from "next/link";
 import React from "react";
+import Carrousel from "../Carrousel/Carousel";
 
 export default function Card ({image, title, tag, id}) {
   return (
     <div className="">
       <div className="pb-2 ">
-        <Link href={`/detalle/${id}?tag=${tag}`}>
-          <img className="w-full md:h-[150px] lg:h-[250px] cursor-pointer"  src={image} alt="Image from important card" />
-        </Link>  
+          <Carrousel images={image} id={id} tag={tag}/>
       </div>
       <div className="pt-2">
         <Link href={`/detalle/${id}?tag=${tag}`}>
