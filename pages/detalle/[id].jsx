@@ -8,6 +8,8 @@ import NextNProgress from "nextjs-progressbar";
 import Loader from "../../components/Loader";
 import DetailCard from "../../components/Detail/DetailCard";
 import parse from 'html-react-parser'
+import Carrousel from "../../components/Carrousel/Carousel";
+import DetailCarousel from "../../components/Carrousel/DetailCarousel";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -60,7 +62,7 @@ export default function Detail () {
                   {news?.title}
                 </h1>
                   <div>
-                    <img src={news?.image} alt="detail image" className="w-full lg:h-[45rem] md:h-[35rem]"/>
+                    <DetailCarousel images={news?.image}/>
                   </div>
             </div>
             <div className="pl-20 pr-24">
