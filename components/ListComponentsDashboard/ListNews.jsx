@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Loader from '../Loader';
 import parser from 'html-react-parser'
+import AdminDashboardCarousel from '../Carrousel/AdminDashboardCarousel';
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -35,7 +36,6 @@ const ListNews = ({ setUpdateData, refreshList, setRefreshList }) => {
       const copyCurrentData = JSON.parse(JSON.stringify(currentNew))
       copyCurrentData.tag = currentNew?.tag?.name
       copyCurrentData.categories = cat
-      console.log(currentNew);
       setUpdateData(copyCurrentData)
     } catch (error) {
       console.log(error)
@@ -71,7 +71,7 @@ const ListNews = ({ setUpdateData, refreshList, setRefreshList }) => {
     return (
       <div className='flex flex-row gap-3 overflow-auto'>
         <div className='basis-[30%]'>
-          <img className='w-full h-[80px]' src={currentNew.image} alt={currentNew.name}/>
+          <AdminDashboardCarousel images={currentNew.image}/>
         </div>
         <div className='flex flex-row basis-[70%] gap-3'>
           <div className='basis-[70%]'>
@@ -88,7 +88,7 @@ const ListNews = ({ setUpdateData, refreshList, setRefreshList }) => {
 
   return (
     <div>
-      <div className='sticky top-0 bg-white'>
+      <div className='bg-white'>
         <div className='flex flex-col justify-center items-center px-4 py-2 divide-y divide-blue-200'>
           <h1 className='text-4xl font-roboto w-full text-center p-4'>NOTICIAS</h1>
           <span className='w-full'></span>

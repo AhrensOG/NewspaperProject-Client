@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
+import CenterListPostCarousel from '../Carrousel/CenterListPostCarousel'
 
 const CenterListPostCard = ({ title, subTitle = false, image, category, tag, id }) => {
   return (
     <div className='pb-2 pt-3 mr-1 ml-1'>
       <div className='hover:cursor-pointer'>
-        <Link href={`/detalle/${id}?tag=${tag}`}>
-          <img className='w-full md:h-[110px] lg:h-[160px]' src={image} alt='PostImage'/>
-        </Link>
+          <CenterListPostCarousel images={image} id={id} tag={tag}/>
+          {/* <img className='w-full md:h-[110px] lg:h-[160px]' src={image} alt='PostImage'/> */}
       </div>
       <div>
         <span className='text-[10px] text-slate-700 font-mono tracking-[0.1rem]'>{category}</span>

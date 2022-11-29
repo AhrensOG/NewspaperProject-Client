@@ -5,6 +5,7 @@ import "quill/dist/quill.snow.css"
 import axios from 'axios'
 import Alert from '../Alert/Alert';
 import * as Yup from 'yup'
+import { uploadFile } from '../../firebase/config'
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -21,9 +22,13 @@ const NewForm = ({ data, setRefreshList }) => {
   const [currentTag, setCurrentTag] = useState('')
   const [content, setContent] = useState('')
 
+  const [showImages, setShowImages] = useState([])
+  const [images, setImages] = useState([]);
+  const [imageFile, setImageFile] = useState([]);
+  
+
   const [errorClassTitle, setErrorClassTitle] = useState('')
   const [errorClassSubtitle, setErrorClassSubtitle] = useState('')
-  const [errorClassImage, setErrorClassImage] = useState('')
 
   //USEEFFECT FOR RICH TEXT EDITOR QUILL
   useEffect(() => {
@@ -32,13 +37,16 @@ const NewForm = ({ data, setRefreshList }) => {
         quill.setText(data?.description)
         setCategories(data?.categories)
         setCurrentTag(data?.tag)
+        const imagesArray = data?.image.split(' ')
+        setImages(imagesArray)
+        setShowImages([])
       }
       quill.on('text-change', () => {
         var contenido = quill.root.innerHTML
         setContent(contenido)
       })
     }
-  }, [quill, data?.description]);
+  }, [quill, data?.description, data]);
 
   //USEEFFECT FOR GET DATA FROM API
   useEffect(() => {
@@ -65,16 +73,26 @@ const NewForm = ({ data, setRefreshList }) => {
     else { value.category = categories }
     value.description = content
 
-    const config = {
-      method: action,
-      url: `${SERVER_URL}/post`,
-      data: value,
-    }
-
     try {
       if(content.length === 0) return Alert('Ups...', 'question', 'Debes ingresar una descripcion');
 
+      const urlArray = images;
+      for (let i = 0; i < imageFile.length; i++) {
+        const url = await uploadFile(imageFile[i], imageFile[i].name)
+        urlArray.push(url)
+      }
+
+      value.image = urlArray.join(' ');
+      console.log(urlArray);
+
+      const config = {
+        method: action,
+        url: `${SERVER_URL}/post`,
+        data: value,
+      }
+
       const data = await axios(config)
+      setImageFile([])
       setRefreshList(true)
       if(action === 'post') {
         resetForm()
@@ -114,18 +132,32 @@ const NewForm = ({ data, setRefreshList }) => {
     console.log(categories);
   }
 
+  const handleUploadFiles = async (e) => {
+    try {
+      if(!showImages.includes(e.target.files[0].name)){
+        setShowImages([...showImages, e.target.files[0].name])
+        setImageFile([...imageFile, e.target.files[0]])
+      }else {
+        Alert('Ups...', 'info', 'La imagen ya fue seleccionada')
+      }
+      console.log(imageFile);
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDeleteImage = (e) => {
+    const newImageArray = images.filter(i => i !== e.target.value)
+    setImages(newImageArray)
+  }
+
   const schema = Yup.object().shape({
     title: Yup.string()
       .min(10, 'Muy Corto')
-      .max(50, 'Muy Largo')
       .required('Ingresa un titulo'),
     subTitle: Yup.string()
       .min(20, 'Muy Corto')
-      .max(120, 'Muy Largo')
       .required('Ingresa un subtitulo'),
-    image: Yup.string()
-      .url('Ingresa una URL valida')
-      .required('Ingresa una imagen'),
     type: Yup.string()
     .required('Seleciona una opcion'),
     tag: Yup.string()
@@ -147,7 +179,7 @@ const NewForm = ({ data, setRefreshList }) => {
       }}
     >
     {({errors}) => (
-      <Form className='sticky top-0'>
+      <Form className='sticky top-[-25rem]'>
         
         <div className='flex flex-col justify-center items-center px-4 py-2 pb-8 divide-y divide-blue-200'>
           <h1 className='text-4xl font-roboto w-full text-center p-4'>CREAR/ACTUALIZAR</h1>
@@ -172,13 +204,33 @@ const NewForm = ({ data, setRefreshList }) => {
           <div style={{ width: '100%'}} className='h-auto' >
             <div ref={quillRef} />
           </div>
-          
-          <Field type="text" id='image' name='image' placeholder='Ingrese una imágen' className={`basis-[90%] border ${errorClassImage} rounded focus:outline-none focus:border-blue-200 focus:ring-1 p-2`}/>
-          {
-            errors.image
-            ? setErrorClassImage('border-red-700')
-            : setErrorClassImage('border-gray-500')
-          }
+
+          <div className='flex flex-row gap-4'>
+            {
+              data?.id
+              ? images.map(i => {
+                  return (
+                    <div className='border border-gray-600 rounded-md flex flex-row'>
+                      <img className='w-[80px] h-[80px]' src={i} alt="" />
+                      <button onClick={handleDeleteImage} value={i} className='absolute pl-1 font-roboto text-red-400'>x</button>
+                    </div>
+                  )
+                })
+              : <div></div>
+            }
+          </div>
+
+          <div className='flex flex-col'>
+            {
+              data?.id 
+              ? showImages?.map(i => {
+                return <span>{i.slice(0, 20)}...</span>
+              })
+              : <div></div>
+            }
+          </div>
+
+          <input onChange={(e) => handleUploadFiles(e)} type="file" id='image' name='image' placeholder='Ingrese una imágen' className={`basis-[90%] border rounded focus:outline-none focus:border-blue-200 focus:ring-1 p-2`}/>
 
           <div className='flex flex-row p-2'>
             <div className='basis-1/2'>
