@@ -10,7 +10,12 @@ const categorias = () => {
       <div className='basis-[20%]'>
         <SideBar className='h-full'/>
       </div>
-      <DashboardCategory/>
+      <div className='basis-[30%]'>
+        <DashboardCategory/>
+      </div>
+      <div className='basis-[50%]'>
+        <img className='sticky top-0 w-full h-[550px] pt-16' src="https://www.shutterstock.com/image-vector/journalist-concept-mass-media-news-260nw-1995929273.jpg" alt="" />
+      </div>
     </div>
   )
 }
