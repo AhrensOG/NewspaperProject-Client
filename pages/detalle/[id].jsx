@@ -7,6 +7,9 @@ import { useRouter } from 'next/router'
 import NextNProgress from "nextjs-progressbar";
 import Loader from "../../components/Loader";
 import DetailCard from "../../components/Detail/DetailCard";
+import parse from 'html-react-parser'
+import Carrousel from "../../components/Carrousel/Carousel";
+import DetailCarousel from "../../components/Carrousel/DetailCarousel";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -55,11 +58,11 @@ export default function Detail () {
                 </div>
             </div>
             <div className="pl-20 pt-4 pr-16">
-                <h1 className="pb-5 lg:text-7xl md:text-5xl font-bold font-noto">
+                <h1 className="pb-5 lg:text-7xl md:text-5xl font-bold font-noto break-words">
                   {news?.title}
                 </h1>
                   <div>
-                    <img src={news?.image} alt="detail image" className="w-full lg:h-[45rem] md:h-[35rem]"/>
+                    <DetailCarousel images={news?.image}/>
                   </div>
             </div>
             <div className="pl-20 pr-24">
@@ -67,7 +70,7 @@ export default function Detail () {
                 <h2 className="font-bold lg:text-5xl md:text-3xl">{news?.subTitle}</h2>
               </div>
               <div className="pb-16">
-                <h3 className="text-2xl leading-[3rem]">{news?.description}</h3>
+                <h3 className="text-2xl leading-[3rem]">{parse(news?.description)}</h3>
               </div>
               <div className="lg:pb-[1rem] md:[1rem] flex">
                 <span className="basis-1/2 text-2xl italic font-semibold">Relacionados:</span>

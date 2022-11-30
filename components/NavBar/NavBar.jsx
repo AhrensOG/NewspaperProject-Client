@@ -30,13 +30,6 @@ export default function NavBar () {
               <SlMenu/>
             </div>
           </IconContext.Provider>
-          {/* <Link href={`/`}>
-            <img
-              src='/Logo.png'
-              alt='picture for test'
-            className="w-full lg:h-[100px] md:h-[70px] lg:pl-1 md:pl-4 basis-[60%]"
-            />    
-          </Link> */}
         </div>
         <div className= "basis-[75%] w-full flex flex-nowrap h-50 items-center justify-start">
           <div className=" flex flex-nowrap h-fdivl items-center w-full"  >
@@ -52,9 +45,7 @@ export default function NavBar () {
       </div>
       <div className="flex space-x-4 basis-[40%] items-center justify-end md:">
         <div className="flex flex-row space-x-4">
-          {/* <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Ingresar</button>      
-          <button className="  text-black px-3 py-2 font-medium h-15 rounded-md border-r-slate-200" >Registrarse</button>       */}
-          <button className=" text-black px-3 pr-6 py-2 font-medium h-15 rounded-md " >Buscar</button>
+          <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Ingresar</button>
         </div>
       </div>
     </nav>

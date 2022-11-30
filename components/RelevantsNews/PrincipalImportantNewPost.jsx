@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
+import PrincipalImportantSectionCarousel from '../Carrousel/PrincipalImportantSectionCarousel'
 
 const PrincipalImportantNewPost = ({ title, image, description, category = 'Policial', tag, id }) => {
   return (
     <div className=''>
       <div>
-        <Link href={`/detalle/${id}?tag=${tag}`}>
-          <img className='w-full lg:h-[500px] md:h-[350px] pb-2' src={image} alt="primaryImage" />
-        </Link>
+        <PrincipalImportantSectionCarousel images={image} id={id} tag={tag}/>
       </div>
       <div>
         <span className='text-[15px] text-slate-600 font-mono tracking-[0.1rem]'>{category}</span>
