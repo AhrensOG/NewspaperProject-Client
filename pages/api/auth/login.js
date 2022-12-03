@@ -12,17 +12,16 @@ export default async function login  (req, res) {
         email,
         password
       }
-      const data = await axios.post("http://localhost:3001/user", credentials )
+      const data = await axios.post("http://localhost:3001/auth", credentials )
       const id = data.data
       const encoder = new TextEncoder()
       const alg = 'HS256'
       const jwt = await new SignJWT({ id})
       .setProtectedHeader({ alg, type:"JWT" })
       .setIssuedAt()
-      // .setExpirationTime('2h')
       .sign(encoder.encode(process.env.JWT_PRIVATE_KEY))
 
-      const serialized = serialize('myTokenName', jwt, { 
+      const serialized = serialize('set-admin-cookie', jwt, { 
         httpOnly: false,       
         sameSite: 'strict',
         maxAge: 60 * 60 * 6 * 1,
@@ -31,7 +30,7 @@ export default async function login  (req, res) {
       res.setHeader("Set-Cookie", serialized)
       return res.status(200).send("Login succesfully")
     } catch (e) {
-      console.log(e.message)
+      res.status(400).send("El email o la contraseña no son correctos")
     }
   }
 }

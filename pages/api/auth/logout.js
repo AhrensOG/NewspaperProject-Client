@@ -7,7 +7,7 @@ export default async function login  (req, res) {
       if (!myTokenName) {
         res.status(400).send("A token is required")
       } 
-      const serialized = serialize("myTokenName", null, {
+      const serialized = serialize("set-admin-cookie", null, {
         httpOnly: true,
         sameSite: "strict",
         maxAge: 0,
