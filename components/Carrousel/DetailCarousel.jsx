@@ -6,7 +6,7 @@ const DetailCarousel = ({ images }) => {
   const imagesArray = images.split(" ");
 
   return (
-    <div className="h-56 sm:h-64 lg:h-[40rem] xl:h-[40rem] 2xl:h-[45rem]">
+    <div className="lg:h-[40rem] md:h-[32rem] sm:h-[24rem] h-[16rem]">
       <Carousel slideInterval={5000}>
         {
           imagesArray?.length &&
@@ -27,23 +27,3 @@ const DetailCarousel = ({ images }) => {
 }
 
 export default DetailCarousel
-
-// {
-//   imagesArray?.length !== 0 && id && tag
-//     ? imagesArray.map((i) => {
-//         return (
-//           <Link href={`/detalle/${id}?tag=${tag}`}>
-//           <img
-//             key={i}
-//             src={i}
-//             alt="IMG"
-//           />
-//           </Link>
-//         );
-//       })
-//     : imagesArray.map(i => {
-//       return (
-//         <img src={i} alt="detail image" className="w-full lg:h-[45rem] md:h-[35rem]"/>
-//       )
-//     })
-// }

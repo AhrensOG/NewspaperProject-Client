@@ -57,13 +57,13 @@ export default function Footer () {
             </div>
           </div>
         </div>
-        <div className=" flex flex-row w-full items-center py-2 divide-x divide-gray-700 text-base font-semibold">
-          <span className="text-stone-400 sm:px-3 px-1">Disclaimer</span>
-          <span className="text-stone-400 sm:px-3 px-1">Privacy</span>
-          <span className="text-stone-400 sm:px-3 px-1">Security</span>
-          <span className="text-stone-400 sm:px-3 px-1">RSS</span>
-          <span className="text-stone-400 sm:px-3 px-1">Site Map</span>
-          <span className="text-stone-400 sm:px-3 px-1">Accesibility Help</span>
+        <div className=" flex flex-row flex-wrap gap-y-6 w-full items-center py-4 divide-x divide-gray-700 text-base font-semibold">
+          <span className="text-stone-400 sm:px-3 px-2">Disclaimer</span>
+          <span className="text-stone-400 sm:px-3 px-2">Privacy</span>
+          <span className="text-stone-400 sm:px-3 px-2">Security</span>
+          <span className="text-stone-400 sm:px-3 px-2">RSS</span>
+          <span className="text-stone-400 sm:px-3 px-2">Site Map</span>
+          <span className="text-stone-400 sm:px-3 px-2">Accesibility Help</span>
         </div>
       </div>
     </div>
