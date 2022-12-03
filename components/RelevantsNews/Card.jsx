@@ -10,7 +10,7 @@ export default function Card ({image, title, tag, id}) {
       </div>
       <div className="pt-2">
         <Link href={`/detalle/${id}?tag=${tag}`}>
-          <h2 className="font-custom font-semibold md:text-[1.2rem] lg:text-[1.5rem] cursor-pointer hover:underline underline-offset-1" >{title}</h2>
+          <h2 className="font-custom font-semibold text-2xl sm:text-base md:text-[1.2rem] lg:text-[1.5rem] cursor-pointer hover:underline underline-offset-1" >{title}</h2>
         </Link>  
       </div> 
     </div>

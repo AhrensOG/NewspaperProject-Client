@@ -12,7 +12,7 @@ const PrincipalPostCard = ({ title, subTitle = false, image, category, tag, id }
       </div>
       <div>
         <Link href={`/detalle/${id}?tag=${tag}`}>
-          <h1 className='text-[3rem] font-bold font-custom leading-[3rem] break-normal tracking-[-0.18rem] pt-2 pb-2 hover:underline underline-offset-1 cursor-pointer lg:text-[3.3rem] lg:leading-[3.3rem] md:text-[2.5rem] md:leading-[2.5rem]'>{title}</h1>
+          <h1 className='font-bold font-custom break-normal pt-2 pb-2 hover:underline underline-offset-1 cursor-pointer lg:text-[3.3rem] lg:leading-[3.3rem] md:text-[2.5rem] md:leading-[2.5rem] md:tracking-[-0.18rem] sm:text-[2rem] sm:leading-[2rem] sm:tracking-[-0.10rem] text-2xl leading-6 tracking-[-0.06rem]'>{title}</h1>
         </Link>
         <span className='text-[10px] font-thin'>CHAINED</span>
       </div>

@@ -16,7 +16,7 @@ export default function TrendingSection ({loader}) {
   }, [])
 
   return (
-    <div className='lg:px-[4rem] lg:pt-[1.5rem] md:pt-[1rem] md:px-[2.5rem]'>
+    <div className='lg:px-16 lg:pt-6 md:pt-4 md:px-10 px-4'>
       {
         trending.length === 0 || !loader
         ? <div></div>
@@ -25,7 +25,7 @@ export default function TrendingSection ({loader}) {
             <div>
               <Tag key={'Tendencias'} title={'Tendencias'}/>
             </div>
-            <div className="items-center grid grid-cols-4 w-full pt-[1.5rem] pb-[2rem]" >
+            <div className="items-center grid grid-cols-1 sm:grid-cols-4 gap-4 w-full py-8" >
               {trending?.length !== 0 && trending.map ((e) => {
                 const category = e.categories.length === 0 ? '' : e.categories[0].name
                 return(

@@ -9,10 +9,12 @@ import Loader from "../../components/Loader";
 import DetailCard from "../../components/Detail/DetailCard";
 import parse from 'html-react-parser'
 import DetailCarousel from "../../components/Carrousel/DetailCarousel";
+import SideBar3 from "../../components/SideBar2/SideBar3";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 export default function Detail () {
+  const [nav, setNav] = useState(false);
 
   const router = useRouter();
   const { id, tag } = router.query;
@@ -35,7 +37,8 @@ export default function Detail () {
 
   return (
     <div className=" bg-slate-50 ">
-      <NavBar/>
+      <NavBar setNav={setNav} nav={nav}/>
+      <SideBar3 nav={nav} setNav={setNav}/>
       {
         !id || Object.keys(news).length === 0 || related.length === 0
         ? <Loader/>

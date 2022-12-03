@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from '../Loader'
+import Alert from "../Alert/Alert";
 
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 const DashboardCategory = () => {
   const [allCategories, setAllCategories] = useState([]);
-  const [newCategory, setNewCategory] = useState(false);
+  const [newCategory, setNewCategory] = useState('');
 
   useEffect(() => {
     const getCategories = async () => {
@@ -20,7 +21,7 @@ const DashboardCategory = () => {
   const handleDelete = async (name) => {
     const newCategories = allCategories.filter( e => e.name !== name.target.value )
     const deleteCategory = allCategories.filter(e => e.name === name.target.value )
-    const data = await axios.delete(`${SERVER_URL}/category?id=${ deleteCategory[0].id}`,)
+    await axios.delete(`${SERVER_URL}/category?id=${ deleteCategory[0].id}`,)
     setAllCategories(newCategories)
   }
   const handlerChange = (e) => {
@@ -29,9 +30,14 @@ const DashboardCategory = () => {
 
   const handlerSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`${SERVER_URL}/category?name=${newCategory}`,)
-    const categories = await axios.get(`${SERVER_URL}/category`);
-    setAllCategories(categories.data);
+    try {
+      await axios.post(`${SERVER_URL}/category?name=${newCategory}`,)
+      const categories = await axios.get(`${SERVER_URL}/category`);
+      setAllCategories(categories.data);
+      Alert('Excelente', 'success', 'La categoria fue creada correctamente')
+    } catch (error) {
+      Alert('Ups...', 'error', 'Ocurrio un error, intente nuevamente con un nombre diferente.')
+    }
   }
 
 
