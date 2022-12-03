@@ -12,10 +12,9 @@ const PrincipalImportantSectionCarousel = ({ images, id=false, tag=false }) => {
           imagesArray?.length &&
             imagesArray.map((i) => {
               return (
-                <Link href={`/detalle/${id}?tag=${tag}`}>
+                <Link key={i} href={`/detalle/${id}?tag=${tag}`}>
                 <img
                   className='w-full lg:h-[500px] md:h-[350px] pb-2' 
-                  key={i}
                   src={i}
                   alt="IMG"
                 />

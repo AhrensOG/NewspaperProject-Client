@@ -18,7 +18,6 @@ const TopNewSection = ({setLoader}) => {
     const getData = async () => {
       const todayNews = await axios.get(`${SERVER_URL}/post?tag=Selecciones de hoy&limit=3`)
       const recentNews = await axios.get(`${SERVER_URL}/post?tag=Recientes&limit=5`)
-      console.log(todayNews.data)
 
       setRecentNews(recentNews.data)
       setTodayNews(todayNews.data)
@@ -26,7 +25,6 @@ const TopNewSection = ({setLoader}) => {
     getData()
   },[])
   
-  // console.log(TodayNews)
   TodayNews?.length > 0 && RecentNews?.length > 0 ? setLoader(true) : setLoader(false)
 
   return (
@@ -34,7 +32,7 @@ const TopNewSection = ({setLoader}) => {
       {
         TodayNews?.length === 0 || RecentNews?.length === 0
         ? <Loader/>
-        : <div className="w-full flex gap-12">
+        : <div className="w-full flex sm:flex-row flex-col md:gap-12 sm:gap-6 gap-4">
             <NextNProgress color="#3b82f1"/>
             <div className="basis-[70%]" >
               <div>
@@ -54,7 +52,7 @@ const TopNewSection = ({setLoader}) => {
               <div>
                 <Tag key={'Recientes'} title="Recientes"/>
               </div>
-            <div className="divide-y flex flex-col gap-2">
+            <div className="divide-y flex flex-col sm:gap-0 md:gap-3 pt-3">
                 {
                   RecentNews.length !== 0 && RecentNews.map((p) => {
                     return <ListPostCard id={p.id} tag={p.tag?.name} key={p.title} title={p.title} image={p.image} />

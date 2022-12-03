@@ -6,7 +6,7 @@ const Carrousel = ({ images, id=false, tag=false }) => {
   const imagesArray = images.split(" ");
 
   return (
-    <div className="h-56 md:h-[150px] lg:h-[250px]">
+    <div className="h-[250px] sm:h-[130px] md:h-[150px] lg:h-[250px]">
       <Carousel slideInterval={5000}>
         {
           imagesArray?.length &&
@@ -14,7 +14,7 @@ const Carrousel = ({ images, id=false, tag=false }) => {
               return (
                 <Link href={`/detalle/${id}?tag=${tag}`}>
                 <img
-                  className="w-full md:h-[150px] lg:h-[250px] cursor-pointer" 
+                  className="w-full h-[250px] sm:h-[150px] lg:h-[250px] cursor-pointer" 
                   key={i}
                   src={i}
                   alt="IMG"

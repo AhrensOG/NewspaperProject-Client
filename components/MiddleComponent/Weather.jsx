@@ -19,14 +19,16 @@ const Weather = () => {
 
   }, [])
   return (
-    <div>
-        <div className="font-roboto">Clima</div>  
-        <div>
-          <p className="font-roboto">°C  {weather.current_weather?.temperature}</p>
+    <div className="lg:px-6 md:px-3 py-1">
+        <div className="flex flex-row justify-center">
+          <span className="font-robot lg:text-2xl md:text-xl lg:tracking-wide md:tracking-normal font-semibold text-gray-500">Clima °C  {weather.current_weather?.temperature}</span>
         </div>
-        {Object.keys(dataIcon).length ? <div>
-          <img src={`http://openweathermap.org/img/wn/${dataIcon?.weather[0]?.icon}@2x.png`} alt="weather icon" />
-          </div> : <div> cargando clima... </div> }
+        {
+          Object.keys(dataIcon).length 
+          ? <div className="flex flex-row justify-center">
+              <img src={`http://openweathermap.org/img/wn/${dataIcon?.weather[0]?.icon}@2x.png`} alt="weather icon" />
+            </div> : <div> cargando clima... </div>
+        }
     </div>
   )
 }

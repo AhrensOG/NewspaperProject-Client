@@ -6,7 +6,7 @@ const PrincipalPostCarousel = ({ images, id=false, tag=false }) => {
   const imagesArray = images.split(" ");
 
   return (
-    <div className="h-[] sm:h-[180px] md:h-[230px] lg:h-[280px]">
+    <div className="h-[250px] sm:h-[200px] md:h-[230px] lg:h-[280px]">
       <Carousel slideInterval={5000}>
         {
           imagesArray?.length &&
@@ -14,7 +14,7 @@ const PrincipalPostCarousel = ({ images, id=false, tag=false }) => {
               return (
                 <Link href={`/detalle/${id}?tag=${tag}`}>
                 <img
-                  className="w-full md:h-[230px] lg:h-[280px]" 
+                  className="w-full h-[250px] sm:h-[200px] md:h-[230px] lg:h-[280px]" 
                   key={i}
                   src={i}
                   alt="IMG"

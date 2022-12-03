@@ -13,7 +13,7 @@ const PrincipalImportantNewPost = ({ title, image, description, category = 'Poli
       </div>
       <div className='w-[70%]'>
         <Link href={`/detalle/${id}?tag=${tag}`}>
-          <h1 className='pt-2 font-bold font-custom break-normal tracking-[-0.18rem] pb-2 hover:underline underline-offset-1 cursor-pointer lg:text-[3.5rem] lg:leading-[4rem] md:text-[2.5rem] md:leading-[2.5rem]'>{title}</h1>
+          <h1 className='py-2 font-bold font-custom break-normal hover:underline underline-offset-1 cursor-pointer tracking-[-0.12rem] md:tracking-[-0.16rem] text-[2rem] leading-[2.1rem] md:text-[2.5rem] md:leading-[2.5rem] lg:text-[3.5rem] lg:leading-[4rem]'>{title}</h1>
         </Link>
       </div>
       <div className='pb-4'>
