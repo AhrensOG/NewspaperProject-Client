@@ -5,65 +5,65 @@ import { IconContext } from "react-icons";
 export default function Footer () {
   return (
     <div className="bg-black">  
-      <div className="ml-[2rem] mr-[2rem] h-[500px] divide-y divide-gray-700">
-      <div className="grid grid-cols-[2fr_1fr_1fr] h-[300px]">
-        <div>
-          <div className=" w-full">
-            <h5 className="text-red-50 pt-12 pb-[1rem] pr-[8rem] pl-[1rem] text-justify font-roboto">
-            CHAINED is the world leader in online chained news and information and seeks to inform, engage and empower the world. We expose the information that wasn't known before or current events broadcast over the radio, television, online or in print media. Our content is now available through your mobile phone. No matter where your on-the-go lifestyle takes you, CN brings the news directly to you.
+      <div className="lg:px-8 lg:py-12 px-6 py-8 divide-y divide-gray-700 flex flex-col gap-2">
+        <div className="grid md:grid-cols-[2fr_1fr_1fr] grid-cols-1 px-3">
+          <div>
+            <div className="w-full">
+              <h5 className="text-red-50 text-justify lg:pb-6 md:pr-10 md:pb-4 font-roboto">
+              CHAINED is the world leader in online chained news and information and seeks to inform, engage and empower the world. We expose the information that wasn't known before or current events broadcast over the radio, television, online or in print media. Our content is now available through your mobile phone. No matter where your on-the-go lifestyle takes you, CN brings the news directly to you.
+              </h5>
+            </div>
+            <div className="grid grid-cols-4 px-3 w-[50%] md:w-full">
+            <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
+              <div>
+                <FaFacebookF className="h-[90px] pt-[10px]"/>
+              </div>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
+              <div>
+                <FaInstagram className="h-[90px] pt-[10px] w-[25px]"/>
+              </div>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
+              <div>
+                <FaTwitter className="h-[90px] pt-[10px] w-[25px] "/>
+              </div>
+            </IconContext.Provider>
+            <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
+              <div>
+                <FaYoutube className="h-[90px] pt-[10px] w-[25px]"/>
+              </div>
+            </IconContext.Provider>
+            </div>
+          </div>
+          <div className="py-2">
+            <h5 className="text-red-50 py-2 font-roboto">
+              Más de Opinión Formoseña
             </h5>
+            <div className=" flex flex-col font-roboto gap-4">
+              <span className="text-stone-400 font-roboto">FAQ</span>
+              <span className="text-stone-400 font-roboto">Staff</span>
+              <span className="text-stone-400 font-roboto">Editorial</span>
+            </div>
+            
           </div>
-          <div className="grid grid-cols-8  ml-4 mb-11 pl-[2rem] w-[80%]">
-          <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
-            <div>
-              <FaFacebookF className="h-[90px] pt-[10px]"/>
+          <div className="py-2">
+            <h5 className="text-red-50 py-1 font-roboto">
+              Contactos
+            </h5>
+            <div className="flex flex-col gap-2">
+              <span className="text-stone-400 font-roboto">A cerca de nosotros</span>
+              <span className="text-stone-400 font-roboto">Contactanos</span>
             </div>
-          </IconContext.Provider>;
-          <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
-            <div>
-              <FaInstagram className="h-[90px] pt-[10px] w-[25px]"/>
-            </div>
-          </IconContext.Provider>;
-          <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
-            <div>
-              <FaTwitter className="h-[90px] pt-[10px] w-[25px] "/>
-            </div>
-          </IconContext.Provider>;
-          <IconContext.Provider value={{ color: "gray", className: "global-class-name" }}>
-            <div>
-              <FaYoutube className="h-[90px] pt-[10px] w-[25px]"/>
-            </div>
-          </IconContext.Provider>;
           </div>
         </div>
-        <div className="pt-12">
-          <h5 className="text-red-50 pb-2 font-roboto">
-            Más de Opinión Formoseña
-          </h5>
-          <div className=" flex flex-col font-roboto">
-            <span className="text-stone-400 font-roboto pt-[10px] pb-[15px]">FAQ</span>
-            <span className="text-stone-400 font-roboto pb-[15px]">Staff</span>
-            <span className="text-stone-400 font-roboto pb-[15px]">Editorial</span>
-          </div>
-          
-        </div>
-        <div className="pt-12">
-          <h5 className="text-red-50 pb-2 font-roboto">
-            Contactos
-          </h5>
-          <div className="flex flex-col">
-            <span className="text-stone-400 font-roboto pt-[10px] pb-[15px]">A cerca de nosotros</span>
-            <span className="text-stone-400 font-roboto pt-[10px] pb-[15px]">Contactanos</span>
-          </div>
-        </div>
-      </div>
-        <div className="pt-5 divide-x divide-gray-700 text-[14px] font-semibold">
-          <span className="text-stone-400 px-3">Disclaimer</span>
-          <span className="text-stone-400 px-3">Privacy</span>
-          <span className="text-stone-400 px-3">Segurity</span>
-          <span className="text-stone-400 px-3">RSS</span>
-          <span className="text-stone-400 px-3">Site Map</span>
-          <span className="text-stone-400 px-3">Accesibility Help</span>
+        <div className=" flex flex-row w-full items-center py-2 divide-x divide-gray-700 text-base font-semibold">
+          <span className="text-stone-400 sm:px-3 px-1">Disclaimer</span>
+          <span className="text-stone-400 sm:px-3 px-1">Privacy</span>
+          <span className="text-stone-400 sm:px-3 px-1">Security</span>
+          <span className="text-stone-400 sm:px-3 px-1">RSS</span>
+          <span className="text-stone-400 sm:px-3 px-1">Site Map</span>
+          <span className="text-stone-400 sm:px-3 px-1">Accesibility Help</span>
         </div>
       </div>
     </div>
