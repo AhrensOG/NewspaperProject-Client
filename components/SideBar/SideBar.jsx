@@ -2,12 +2,9 @@ import React from "react";
 import { IoNewspaperOutline } from 'react-icons/io5'
 import { BiCategoryAlt } from 'react-icons/bi'
 import Link from "next/link";
-import { useRouter } from 'next/router'
-import LogOutWithFirebase from "../Login/LogOutWithFirebase";
+import Logout from "../Login/AdminLogout";
 
 const SideBar = () => {
-  const router = useRouter()
-  const { uid } = router.query;
   return (
     <div className="flex h-full">
       <div className="w-full">
@@ -21,7 +18,7 @@ const SideBar = () => {
               </div>
               <ul className="flex flex-col gap-8 items-stretch">
                 <li>
-                  <Link href={`/admin/dashboard/${uid}/noticias`} className="flex flex-row">
+                  <Link href={`/admin/dashboard/noticias`} className="flex flex-row">
                       <div className="pr-3 cursor-pointer">
                         <IoNewspaperOutline color="white" size='30px' />
                       </div>
@@ -29,7 +26,7 @@ const SideBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/admin/dashboard/${uid}/categorias`} className="flex flex-row">
+                  <Link href={`/admin/dashboard/categorias`} className="flex flex-row">
                     <div className="pr-3 cursor-pointer">
                       <BiCategoryAlt color="white" size='30px' />
                     </div>
@@ -38,7 +35,7 @@ const SideBar = () => {
                 </li>
               </ul>
               <div>
-                <LogOutWithFirebase/>
+                <Logout/>
               </div>
             </div>
           </div>

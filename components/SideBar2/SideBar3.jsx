@@ -20,7 +20,7 @@ const SideBar3 = ({ nav, setNav }) => {
       const getCategories = async () => {
         const res = await axios.get(`${SERVER_URL}/category`)
         setCategories(res.data)
-        const cookie = jsCookies.getItem('set-admin-cookie')
+        const cookie = jsCookies.getItem('adminCookie')
         setCookies(cookie)
       }
       getCategories()
@@ -80,9 +80,9 @@ const SideBar3 = ({ nav, setNav }) => {
               })
             }
             {
-              user?.uid === 'bBwF6ybx9OZg4oRg4cC2BhY0PAx1'
+              cookies && user?.uid === 'X9awpVbYfpXl6FA7hrjtuBdU9Ay1'
               ? (
-                  <Link href={`/admin/dashboard/${user?.uid}/noticias`}>
+                  <Link href={`/admin/dashboard/noticias`}>
                     <div className="flex flex-row items-center pt-8 gap-2">
                       <MdDashboardCustomize color="#22d3ee"/>
                       <span className=" text-black rounded-md " >Dashboard</span>
