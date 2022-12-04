@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import NextNProgress from "nextjs-progressbar";
 import jsCookies from "js-cookies";
+import { useAuth } from "../../context/authContext";
 
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
@@ -12,6 +13,7 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 export default function NavBar ({ nav, setNav }) {
   const [categories, setCategories] = useState(["Politica", "Deportes", "Clima", "Ciencia" ]) 
   const [cookies, setCookies] = useState(null);
+  const { user } = useAuth()
 
   useEffect(()=>{
     try {
@@ -63,9 +65,9 @@ export default function NavBar ({ nav, setNav }) {
       <div className="flex space-x-4 basis-[40%] items-center justify-end md:">
         <div className="flex flex-row space-x-4">
           {
-            cookies
+            user?.uid === 'bBwF6ybx9OZg4oRg4cC2BhY0PAx1'
             ? (
-                <Link href={'/admin/dashboard/noticias'}>
+                <Link href={`/admin/dashboard/${user?.uid}/noticias`}>
                   <button className=" text-black px-3 py-2 font-medium h-15 rounded-md " >Dashboard</button>
                 </Link>
               )

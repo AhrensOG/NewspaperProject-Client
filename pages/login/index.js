@@ -1,14 +1,18 @@
 import React from 'react'
 import Login from '../../components/Login/Login'
+import LoginWithFirebaseAuth from '../../components/Login/LoginWithFirebaseAuth'
 import Logout from '../../components/Login/Logout'
-import SideBar2 from '../../components/SideBar2/SideBar2'
+import LogOutWithFirebase from '../../components/Login/LogOutWithFirebase'
+import Register from '../../components/Login/Register'
 
 const index = () => {
   return (
     <div>
       <Login/>
-      <Logout/>
-      <SideBar2/>
+      {/* <LoginWithFirebaseAuth/> */}
+      <LogOutWithFirebase/>
+      {/* <Logout/> */}
+      <Register/>
     </div>
   )
 }

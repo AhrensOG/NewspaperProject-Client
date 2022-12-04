@@ -2,9 +2,11 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useAuth } from '../../context/authContext'
 
 const Login = () => {
 
+  const { signIn } = useAuth()
 const [credentials, setCredentials] = useState({
   email: "",
   password: ""
@@ -21,15 +23,14 @@ const router = useRouter()
   const handlerSubmit = async (e) => {
     try {
       e.preventDefault()
+      await signIn(credentials.email, credentials.password)
       const data = await axios.post("/api/auth/login", credentials)
-      console.log(data)
       if (data.status === 200) {
-
         router.push("/admin/dashboard/noticias")
       }
       
     } catch (error) {
-    console.log(e.message) 
+      console.log(e.message) 
     }
   }
 
@@ -40,8 +41,6 @@ const router = useRouter()
         <input type="password" name='password' placeholder='password' onChange={handleChange}/>
         <button>Log In</button>
       </form>
-      <div>user@user.com</div>
-      <div>this-is-a-passsword</div>
     </div>
   )
 }

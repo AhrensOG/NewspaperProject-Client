@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth } from 'firebase/auth'
 // import { getAnalytics } from "firebase/analytics";
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,13 +38,14 @@ const firebaseConfig = {
 // };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const storage = getStorage(app)
+export const auth = getAuth(app)
 
 export const uploadFile = async (file, title) => {
   const storageRef = ref(storage, `posts/${title}`);
-  await uploadBytes(storageRef, file)
+  await uploadBytes(storageRef, file, )
   const url = await getDownloadURL(storageRef);
   return url
 }
