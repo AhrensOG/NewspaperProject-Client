@@ -3,7 +3,7 @@ import { jwtVerify } from "jose";
 
 export default async function middleware(req) {
   if (req.nextUrl.pathname.includes("/admin/dashboard/noticias")) {
-    const data = req.cookies.get("set-admin-cookie");
+    const data = req.cookies.get("adminCookie");
     if (!data) {
       return NextResponse.redirect(new URL("/login", req.url));
     }

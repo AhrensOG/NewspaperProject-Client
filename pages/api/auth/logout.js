@@ -3,11 +3,11 @@ import { serialize } from "cookie";
 export default async function login  (req, res) {
   if (req.method === "POST") {
     try {
-      const {myTokenName} = req.cookies
-      if (!myTokenName) {
+      const {adminCookie} = req.cookies
+      if (!adminCookie) {
         res.status(400).send("A token is required")
       } 
-      const serialized = serialize("set-admin-cookie", null, {
+      const serialized = serialize("adminCookie", null, {
         httpOnly: true,
         sameSite: "strict",
         maxAge: 0,

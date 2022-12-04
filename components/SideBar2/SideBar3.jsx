@@ -6,19 +6,21 @@ import jsCookies from "js-cookies";
 import axios from "axios";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdDashboardCustomize } from "react-icons/md";
+import { useAuth } from "../../context/authContext";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 const SideBar3 = ({ nav, setNav }) => {
   const [categories, setCategories] = useState([]) 
   const [cookies, setCookies] = useState(null);
+  const { user } = useAuth()
 
   useEffect(()=>{
     try {
       const getCategories = async () => {
         const res = await axios.get(`${SERVER_URL}/category`)
         setCategories(res.data)
-        const cookie = jsCookies.getItem('set-admin-cookie')
+        const cookie = jsCookies.getItem('adminCookie')
         setCookies(cookie)
       }
       getCategories()
@@ -78,9 +80,9 @@ const SideBar3 = ({ nav, setNav }) => {
               })
             }
             {
-              cookies
+              cookies && user?.uid === 'X9awpVbYfpXl6FA7hrjtuBdU9Ay1'
               ? (
-                  <Link href={'/admin/dashboard/noticias'}>
+                  <Link href={`/admin/dashboard/noticias`}>
                     <div className="flex flex-row items-center pt-8 gap-2">
                       <MdDashboardCustomize color="#22d3ee"/>
                       <span className=" text-black rounded-md " >Dashboard</span>

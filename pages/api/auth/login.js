@@ -21,7 +21,7 @@ export default async function login  (req, res) {
       .setIssuedAt()
       .sign(encoder.encode(process.env.JWT_PRIVATE_KEY))
 
-      const serialized = serialize('set-admin-cookie', jwt, { 
+      const serialized = serialize('adminCookie', jwt, { 
         httpOnly: false,       
         sameSite: 'strict',
         maxAge: 60 * 60 * 6 * 1,

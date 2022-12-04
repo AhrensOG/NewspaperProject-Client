@@ -83,7 +83,6 @@ const NewForm = ({ data, setRefreshList }) => {
       }
 
       value.image = urlArray.join(' ');
-      console.log(urlArray);
 
       const config = {
         method: action,
