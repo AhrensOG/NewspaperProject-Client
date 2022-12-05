@@ -4,6 +4,8 @@ import axios from "axios"
 import {SignJWT} from 'jose';
 import {serialize} from "cookie"
 
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
+
 export default async function login  (req, res) {
   if (req.method === "POST") {
     try {
@@ -12,7 +14,7 @@ export default async function login  (req, res) {
         email,
         password
       }
-      const data = await axios.post("http://localhost:3001/auth", credentials )
+      const data = await axios.post(`${SERVER_URL}/auth`, credentials )
       const id = data.data
       const encoder = new TextEncoder()
       const alg = 'HS256'
