@@ -7,10 +7,14 @@ import { useRouter } from 'next/router'
 import NextNProgress from "nextjs-progressbar";
 import Loader from "../../components/Loader";
 import DetailCard from "../../components/Detail/DetailCard";
+import parse from 'html-react-parser'
+import DetailCarousel from "../../components/Carrousel/DetailCarousel";
+import SideBar3 from "../../components/SideBar2/SideBar3";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 export default function Detail () {
+  const [nav, setNav] = useState(false);
 
   const router = useRouter();
   const { id, tag } = router.query;
@@ -33,48 +37,42 @@ export default function Detail () {
 
   return (
     <div className=" bg-slate-50 ">
-      <NavBar/>
+      <NavBar setNav={setNav} nav={nav}/>
+      <SideBar3 nav={nav} setNav={setNav}/>
       {
         !id || Object.keys(news).length === 0 || related.length === 0
         ? <Loader/>
         : <div className="pb-[120px]">
             <NextNProgress color="#3b82f1"/>
-            <div>
-                <div className="flex pl-20">
-                  <div className="pt-8">
-                    <Tag title={news?.tag?.name}/>
-                  </div>
-                  <div className="pt-10 pl-5">
-                    <span className="font-mono">Ivix09</span>
-                  </div>
-                  <div className="pt-10 pl-5" >
-                    <span className="font-mono">
-                      {news?.createdAt}
-                    </span>
-                  </div>
-                </div>
+            <div className="flex sm:flex-row flex-col sm:items-center gap-4 py-4 lg:px-20 md:px-16 sm:px-12 px-4">
+              <div>
+                <Tag title={news?.tag?.name}/>
+              </div>
+              <div className="flex flex-row gap-4">
+                <span className="font-mono">Ivix09</span>
+                <span className="font-mono">
+                  {news?.createdAt}
+                </span>
+              </div>
             </div>
-            <div className="pl-20 pt-4 pr-16">
-                <h1 className="pb-5 lg:text-7xl md:text-5xl font-bold font-noto">
+            <div className="lg:px-20 md:px-16 sm:px-12 px-4">
+                <h1 className="pb-5 lg:text-7xl md:text-5xl sm:text-3xl text-2xl font-bold font-noto break-words">
                   {news?.title}
                 </h1>
                   <div>
-                    <img src={news?.image} alt="detail image" className="w-full lg:h-[45rem] md:h-[35rem]"/>
+                    <DetailCarousel images={news?.image}/>
                   </div>
             </div>
-            <div className="pl-20 pr-24">
-              <div className="text-4xl py-6">
-                <h2 className="font-bold lg:text-5xl md:text-3xl">{news?.subTitle}</h2>
+            <div className="lg:px-20 md:px-16 sm:px-12 px-4">
+              <div className="py-6">
+                <h2 className="font-bold lg:text-5xl md:text-3xl sm:text-2xl text-xl">{news?.subTitle}</h2>
               </div>
               <div className="pb-16">
-                <h3 className="text-2xl leading-[3rem]">{news?.description}</h3>
+                <h3 className="lg:text-3xl lg:leading-[4rem] md:text-2xl md:leading-[3rem] sm:leading-[2rem] text-xl">{parse(news?.description)}</h3>
               </div>
-              <div className="lg:pb-[1rem] md:[1rem] flex">
-                <span className="basis-1/2 text-2xl italic font-semibold">Relacionados:</span>
-                <span className="basis-1/2 text-2xl italic font-semibold">Anuncios:</span>
-              </div>
-              <div className="flex">
+              <div className="flex md:flex-row flex-col-reverse">
                 <div className="basis-1/2 flex flex-col">
+                <span className="basis-1/2 text-2xl italic font-semibold">Relacionados:</span>
                   {related.map((e) => {
                     return(
                       <div className="basis-1/4 w-[80%]">
@@ -84,6 +82,8 @@ export default function Detail () {
                   })}
                 </div>
                 <div className="basis-1/2">
+                  <span className="basis-1/2 text-2xl italic font-semibold">Anuncios:</span>
+
                   ADVERSTIMENT
                 </div>
               </div>

@@ -36,18 +36,18 @@ export default function ImportantSection ({ loader }) {
   }, [])
 
   return (
-    <div className="lg:pl-[4rem] lg:pr-[4rem] md:pl-[2.5rem] md:pr-[2.5rem] pb-16">
+    <div className="lg:px-16 md:px-10 px-4 pb-16">
       {
         news?.length === 0 || primaryPost?.length === 0 || secondaryPost?.length === 0 || upperSection?.length === 0 || leftColumnSection?.length === 0 || middleSection?.length === 0 || rightColumnSection?.length === 0 || !loader
         ? <div></div>
         : <div>
             <NextNProgress color="#3b82f1"/>
             {/* TAG SECTION */}
-            <div className="pt-[.5rem] pb-[1.5rem]">
+            <div className="md:pt-[.5rem] md:pb-[1.5rem] sm:py-[.5rem]">
               <Tag key={'Importante'} title="Importante"/>
             </div>
             {/* UPPER SECTION */}
-            <div className="flex flex-row gap-10 pt-[1rem]">
+            <div className="flex flex-col sm:flex-row gap-10 pt-6 ">
               {
                 upperSection?.length !== 0 && upperSection?.map(( p ) => {
                 return <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
@@ -55,7 +55,7 @@ export default function ImportantSection ({ loader }) {
               }
             </div>
             {/* MIDDLE SECTION */}
-            <div className="flex flex-row pt-12 gap-10">
+            <div className="flex flex-col-reverse sm:flex-row pt-12 gap-10">
 
               {/* LEFT COLUMN */}
               <div className="basis-[32%]">
@@ -72,7 +72,7 @@ export default function ImportantSection ({ loader }) {
 
             </div>
             {/* MIDDLE POST ROW */}
-            <div className="flex flex-row gap-10 pt-[1rem]">
+            <div className="flex flex-col sm:flex-row gap-10 pt-[1rem]">
               {
                 middleSection?.length !== 0 && middleSection?.map(( p ) => {
                 return <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
@@ -80,7 +80,7 @@ export default function ImportantSection ({ loader }) {
               }
             </div>
             {/* LOWER SECTION */}
-            <div className="flex flex-row-reverse pt-12 gap-10">
+            <div className="flex flex-col-reverse sm:flex-row-reverse pt-12 gap-10">
 
               {/* RIGHT COLUMN */}
               <div className="basis-[32%]">
