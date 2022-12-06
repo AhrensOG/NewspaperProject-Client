@@ -71,7 +71,7 @@ const NewForm = ({ data, setRefreshList }) => {
   const onSubmit = async (value, {resetForm})=> {
     if(data?.id) { value.categories = categories } 
     else { value.category = categories }
-    value.description = content
+    value.content = content
 
     try {
       if(content.length === 0) return Alert('Ups...', 'question', 'Debes ingresar una descripcion');
@@ -178,7 +178,7 @@ const NewForm = ({ data, setRefreshList }) => {
       }}
     >
     {({errors}) => (
-      <Form className='sticky top-[-25rem]'>
+      <Form className='sticky top-[-25rem] w-[700px]'>
         
         <div className='flex flex-col justify-center items-center px-4 py-2 pb-8 divide-y divide-blue-200'>
           <h1 className='text-4xl font-roboto w-full text-center p-4'>CREAR/ACTUALIZAR</h1>

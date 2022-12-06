@@ -26,8 +26,8 @@ export default function MiddleComponent() {
         <div className="py-2 md:p-0">
           <IconLogo/>
         </div>
-        <div className="flex flex-row pt-4 md:pt-0 md:px-0">
-          <div className="md:hidden basis-[40%]">
+        <div className="flex flex-row justify-center pt-4 md:pt-0 md:px-0">
+          <div className="hidden sm:flex md:hidden basis-[40%]">
             <Weather/>
           </div>
           <div className="basis-[60%]">
