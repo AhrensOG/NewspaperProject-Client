@@ -6,7 +6,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import Card from '../../components/RelevantsNews/Card';
 import NextNProgress from "nextjs-progressbar";
 import Loader from '../../components/Loader';
-import SideBar3 from '../../components/SideBar2/SideBar3';
+import SideBar from "../../components/SideBarHome/SideBar";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -19,9 +19,13 @@ const Category = () => {
   
   useEffect(() => {
     const getData = async () => {
-      if(category) {
-        const res = await axios.get(`${SERVER_URL}/post/category?name=${category}`)
-        setNews(res.data)
+      try {
+        if(category) {
+          const res = await axios.get(`${SERVER_URL}/post/category?name=${category}`)
+          setNews(res.data)
+        }
+      } catch (e) {
+        console.log(e.message)
       }
     }
     getData();
@@ -30,7 +34,7 @@ const Category = () => {
   return (
     <div>
       <NavBar setNav={setNav} nav={nav}/>
-      <SideBar3 nav={nav} setNav={setNav}/>
+      <SideBar nav={nav} setNav={setNav}/>
       {
         !category || news.length === 0
         ? <Loader/>

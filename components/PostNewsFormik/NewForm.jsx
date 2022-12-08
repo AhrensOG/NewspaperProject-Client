@@ -71,8 +71,8 @@ const NewForm = ({ data, setRefreshList }) => {
   const onSubmit = async (value, {resetForm})=> {
     if(data?.id) { value.categories = categories } 
     else { value.category = categories }
-    value.content = content
-
+    value.description = content
+    
     try {
       if(content.length === 0) return Alert('Ups...', 'question', 'Debes ingresar una descripcion');
 
@@ -104,7 +104,7 @@ const NewForm = ({ data, setRefreshList }) => {
       :data.status === 200 && Alert('Excelente', 'success', 'La noticia fue actualizada correctamente'); 
 
     } catch (error) {
-      Alert('Ups...', 'error', `Ocurrio un error: ${error?.response?.data}`)
+      Alert('Ups...', 'error', `Ocurrio un error: ${error?.response?.data || 'Intente mas tarde...'}`)
     }
   }
 

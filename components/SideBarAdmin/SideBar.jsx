@@ -16,7 +16,7 @@ const SideBar = () => {
                   <img src="/Logo.png" alt="" />
                 </Link>
               </div>
-              <ul className="flex flex-col gap-8 items-stretch">
+              <ul className="flex flex-col list-none gap-8 items-stretch">
                 <li>
                   <Link href={`/admin/dashboard/noticias`} className="flex flex-row">
                       <div className="pr-3 cursor-pointer">
@@ -34,7 +34,7 @@ const SideBar = () => {
                   </Link>
                 </li>
               </ul>
-              <div>
+              <div className="h-[300px] flex items-end">
                 <Logout/>
               </div>
             </div>
