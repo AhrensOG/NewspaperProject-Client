@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DashboardCategory from '../../../components/DashboardCategories/DashboardCategory'
-import SideBar from '../../../components/SideBar/SideBar'
+import SideBar from '../../../components/SideBarAdmin/SideBar'
 
 
 const categorias = () => {

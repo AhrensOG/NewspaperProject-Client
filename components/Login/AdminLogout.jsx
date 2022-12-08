@@ -9,7 +9,7 @@ const Logout = () => {
   const handleLogout = async () => {
     try {
       await logOut()
-      const data = await axios.post("/api/auth/logout")
+      await axios.post("/api/auth/logout")
       router.push('/login')
     } catch (e) {
       console.log(e.message)
@@ -17,7 +17,7 @@ const Logout = () => {
   }
   return (
     <div>
-      <button onClick={handleLogout}>Cerrar Sesion</button>
+      <button className='font-roboto font-bold text-2xl p-4 text-gray-400 border border-gray-400 rounded-md cursor-pointer' onClick={handleLogout}>Cerrar Sesion</button>
     </div>
   )
 }

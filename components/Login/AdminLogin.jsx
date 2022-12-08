@@ -35,8 +35,8 @@ const router = useRouter()
   }
 
   return (
-    <div>
-      <form onSubmit={handlerSubmit}>
+    <div className='px-6 py-12'>
+      <form className='flex flex-col items-center' onSubmit={handlerSubmit}>
         <input type="email" name='email' placeholder='email' onChange={handleChange} />
         <input type="password" name='password' placeholder='password' onChange={handleChange}/>
         <button>Log In</button>

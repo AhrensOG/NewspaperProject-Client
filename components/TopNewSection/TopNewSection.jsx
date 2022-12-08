@@ -12,15 +12,21 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 const TopNewSection = ({setLoader}) => {
   const [TodayNews, setTodayNews] = useState([]);
   const [RecentNews, setRecentNews] = useState([]);
+  const [firstPlain, setFirstPlain] = useState([]);
 
 
   useEffect(() => {
     const getData = async () => {
-      const todayNews = await axios.get(`${SERVER_URL}/post?tag=Selecciones de hoy&limit=3`)
-      const recentNews = await axios.get(`${SERVER_URL}/post?tag=Recientes&limit=5`)
-
-      setRecentNews(recentNews.data)
-      setTodayNews(todayNews.data)
+      try {
+        const todayNews = await axios.get(`${SERVER_URL}/post?tag=Selecciones de hoy&limit=3`)
+        const recentNews = await axios.get(`${SERVER_URL}/post?tag=Recientes&limit=5`)
+        const plain = await axios.get(`${SERVER_URL}/post/plain?firstPlain=true`)
+        setTodayNews(todayNews.data)
+        setRecentNews(recentNews.data)
+        setFirstPlain(plain.data)
+      } catch (error) {
+        console.log(error)
+      }
     }
     getData()
   },[])
@@ -40,7 +46,7 @@ const TopNewSection = ({setLoader}) => {
               </div>
               {/* <div className="flex"> */}
                 <div className="basis-[65%]">
-                  <PrincipalPostCard key={TodayNews[0]?.id} id={TodayNews[0]?.id} tag={TodayNews[0]?.tag?.name} title={TodayNews[0]?.title} subTitle={TodayNews[0]?.subTitle} image={TodayNews[0]?.image} category={ TodayNews[0]?.categories[0]?.name} />
+                  <PrincipalPostCard key={firstPlain[0]?.id} id={firstPlain[0]?.id} tag={firstPlain[0]?.tag?.name} title={firstPlain[0]?.title} subTitle={firstPlain[0]?.subTitle} image={firstPlain[0]?.image} category={ firstPlain[0]?.categories[0]?.name} />
                 </div>
                 {/* <div className="basis-[35%] divide-y pl-4 pr-4">
                   <CenterListPostCard key={TodayNews[1]?.id} id={TodayNews[1]?.id} tag={TodayNews[1]?.tag?.name} title={TodayNews[1]?.title} image={TodayNews[1]?.image} category={ TodayNews[1]?.categories[0]?.name} />
