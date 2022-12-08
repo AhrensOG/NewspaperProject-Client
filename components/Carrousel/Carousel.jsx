@@ -10,16 +10,18 @@ const Carrousel = ({ images, id=false, tag=false }) => {
       <Carousel slideInterval={5000}>
         {
           imagesArray?.length &&
-            imagesArray.map((i) => {
+            imagesArray.map((a, i) => {
               return (
-                <Link href={`/detalle/${id}?tag=${tag}`}>
-                <img
-                  className="w-full h-[250px] sm:h-[150px] lg:h-[250px] cursor-pointer" 
-                  key={i}
-                  src={i}
-                  alt="IMG"
-                />
-                </Link>
+                <div key={i}>
+                  <Link href={`/detalle/${id}?tag=${tag}`}>
+                  <img
+                    className="w-full h-[250px] sm:h-[150px] lg:h-[250px] cursor-pointer" 
+                    key={i}
+                    src={a}
+                    alt="IMG"
+                  />
+                  </Link>
+                </div>
               );
             })
         }
