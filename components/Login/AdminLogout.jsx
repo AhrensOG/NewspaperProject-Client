@@ -10,9 +10,9 @@ const Logout = () => {
     try {
       await logOut()
       await axios.post("/api/auth/logout")
-      router.push('/login')
+      router.push('/login/admin')
     } catch (e) {
-      console.log(e.message)
+      console.log(e)
     }
   }
   return (
