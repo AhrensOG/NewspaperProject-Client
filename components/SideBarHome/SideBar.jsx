@@ -54,7 +54,7 @@ const SideBar = ({ nav, setNav }) => {
       <div
         className={
           nav
-            ? "fixed left-0 top-0 w-[75%] sm:w-[50%] md:w-[65%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
+            ? "fixed left-0 top-0 w-[75%] sm:w-[50%] h-screen bg-slate-50 p-10 ease-in duration-500"
             : "z-10 fixed left-[-100%] top-0 p-10 ease-in duration-500"
         }
       >
@@ -89,14 +89,15 @@ const SideBar = ({ nav, setNav }) => {
                 )
               })
             } */}
-            <select name="categories" id="cat" onChange={(e) => handleChange(e)}>
-              <option value="categorie">Selecciona una categoría</option>
+            <select name="categories" id="cat" onChange={(e) => handleChange(e)} className='block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-slate-50 focus:ring-cyan-300 focus:border-cyan-300 dark:text-white'>
+              <option selected className="text-lg font-roboto">Selecciona una categoría</option>
               {categories?.length > 0 &&
                 categories?.map((c) => {
                   return (
                         <option
+                          key={c.id}
                           onClick={() => setNav(false)}
-                          className="py-4 text-xs hover:text-cyan-400"
+                          className="text-lg font-roboto"
                         >
                           {c.name}
                         </option>
@@ -115,13 +116,13 @@ const SideBar = ({ nav, setNav }) => {
               <div></div>
             )}
           </div>
-          <div className="pt-14">
+          <div className="pt-[15rem]">
             <p className="uppercase tracking-widest text-[#22d3ee]">
               Contactanos
             </p>
             <div className="flex items-center justify-between my-4 w-full sm:w-[80%]">
               <a
-                href="https://www.linkedin.com/in/ahrensog-fullstack"
+                href="#"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -130,7 +131,7 @@ const SideBar = ({ nav, setNav }) => {
                 </div>
               </a>
               <a
-                href="https://github.com/AhrensOG"
+                href="#"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -138,7 +139,7 @@ const SideBar = ({ nav, setNav }) => {
                   <FaInstagram color="#22d3ee" />
                 </div>
               </a>
-              <Link href="/#contact">
+              <Link href="#">
                 <div
                   onClick={() => setNav(!nav)}
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
@@ -146,7 +147,7 @@ const SideBar = ({ nav, setNav }) => {
                   <FaTwitter color="#22d3ee" />
                 </div>
               </Link>
-              <a href="CV-OGA-C.pdf" download="CV-Gabriel-Ahrens.pdf">
+              <a href="#" download="CV-Gabriel-Ahrens.pdf">
                 <div
                   onClick={() => setNav(!nav)}
                   className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300"
