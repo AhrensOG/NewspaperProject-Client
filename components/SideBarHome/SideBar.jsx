@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { AiOutlineClose } from "react-icons/ai";
@@ -8,6 +7,7 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdDashboardCustomize } from "react-icons/md";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from 'next/router'
+import Selector from "../Search/Selector";
 
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
@@ -39,6 +39,7 @@ const SideBar = ({ nav, setNav }) => {
 
   const handleChange = (e) => {
     const data = e.target.value 
+    setNav(!nav)
     router.push(`/categorias/${data}`)
 
   }
@@ -55,13 +56,13 @@ const SideBar = ({ nav, setNav }) => {
         className={
           nav
             ? "fixed left-0 top-0 w-[75%] sm:w-[50%] h-screen bg-slate-50 p-10 ease-in duration-500"
-            : "z-10 fixed left-[-100%] top-0 p-10 ease-in duration-500"
+            : "z-10 fixed left-[-200%] top-0 p-10 ease-in duration-500"
         }
       >
         <div>
           <div className="flex w-full items-center justify-between">
             <Link href="/" onClick={() => setNav(false)}>
-              <Image src="/Logo.png" width="140" height="60" alt="/" />
+              <img src="/Logo.png" width="140" height="60" alt="/" />
             </Link>
             <div
               onClick={handleNav}
@@ -76,34 +77,24 @@ const SideBar = ({ nav, setNav }) => {
         </div>
         <div className="py-4 flex flex-col">
           <div className="uppercase flex flex-col gap-3">
-            {/* {
-              categories?.length > 0 && categories?.map(c => {
-                return (
-                  <div key={c.name}>
-                    <Link href={`/categorias/${c.name}`}>
-                      <span onClick={() => setNav(false)} className="py-4 text-xs hover:text-cyan-400">
-                        {c.name}
-                      </span>
-                    </Link>
-                  </div>
-                )
-              })
-            } */}
-            <select name="categories" id="cat" onChange={(e) => handleChange(e)} className='block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-slate-50 focus:ring-cyan-300 focus:border-cyan-300 dark:text-white'>
-              <option selected className="text-lg font-roboto">Selecciona una categoría</option>
+            <select name="categories" id="cat" onChange={(e) => handleChange(e)} className='uppercase block w-full px-4 py-3 text-base font-medium text-gray-700 border border-gray-300 rounded-lg bg-slate-50 focus:ring-cyan-300 focus:border-cyan-300 dark:text-white'>
+              <option value='default' className="text-lg ">Selecciona una categoría</option>
               {categories?.length > 0 &&
                 categories?.map((c) => {
                   return (
                         <option
                           key={c.id}
-                          onClick={() => setNav(false)}
                           className="text-lg font-roboto"
+                          value={c.name}
                         >
                           {c.name}
                         </option>
                   );
                 })}
             </select>
+            <div className="md:hidden pt-4">
+              <Selector/>
+            </div>
 
             {cookies && user?.uid === "X9awpVbYfpXl6FA7hrjtuBdU9Ay1" ? (
               <Link href={`/admin/dashboard/noticias`}>
