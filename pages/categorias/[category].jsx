@@ -43,7 +43,7 @@ const Category = () => {
             <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 py-6'>
               {
                 news?.length > 0 && news?.map(( p ) => {
-                  return <Card id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                  return <Card key={p.id} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
                 })
               }
             </div>
