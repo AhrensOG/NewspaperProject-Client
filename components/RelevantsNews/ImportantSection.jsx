@@ -23,7 +23,7 @@ export default function ImportantSection ({ loader }) {
   const [thirdPlain, setThirdPlain] = useState([]);
 
   for (let i = 0; i < news?.length; i++) {
-    if(news[i].title !== secondPlain[0].title && news[i].title !== thirdPlain[0].title) {
+    if(news[i]?.title !== secondPlain[0]?.title && news[i]?.title !== thirdPlain[0]?.title) {
       filteredNews.push(news[i])
     }
   }
@@ -67,7 +67,7 @@ export default function ImportantSection ({ loader }) {
               {
                 upperSection?.length !== 0 && upperSection?.map(( p, i ) => {
                 return <div key={i}>
-                  <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                  <Card key={p?.title} id={p?.id} tag={p?.tag.name} image={p?.image} title={p?.title} />
                 </div> 
               }) 
               }
@@ -79,7 +79,7 @@ export default function ImportantSection ({ loader }) {
               <div className="basis-[32%]">
                 {
                   leftColumnSection?.length !== 0 && leftColumnSection?.map(( p, i ) => {
-                    return <div key={i} className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
+                    return <div key={i} className="pb-6"><Card key={p?.title} id={p?.id} tag={p?.tag.name} image={p?.image} title={p?.title} /></div>
                   })
                 }
               </div>
@@ -95,7 +95,7 @@ export default function ImportantSection ({ loader }) {
                 middleSection?.length !== 0 && middleSection?.map(( p, i ) => {
                 return  ( 
                 <div key={i}>
-                  <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                  <Card key={p?.title} id={p?.id} tag={p?.tag.name} image={p?.image} title={p?.title} />
                 </div>  
                 )
               }) 
@@ -108,7 +108,7 @@ export default function ImportantSection ({ loader }) {
               <div className="basis-[32%]">
                 {
                   rightColumnSection?.length !== 0 && rightColumnSection?.map(( p, i ) => {
-                    return <div key={i} className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
+                    return <div key={i} className="pb-6"><Card key={p?.title} id={p?.id} tag={p?.tag.name} image={p?.image} title={p?.title} /></div>
                   })
                 }
               </div>
