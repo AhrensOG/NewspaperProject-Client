@@ -9,7 +9,7 @@ import Loader from "../../components/Loader";
 import DetailCard from "../../components/Detail/DetailCard";
 import parse from 'html-react-parser'
 import DetailCarousel from "../../components/Carrousel/DetailCarousel";
-import SideBar3 from "../../components/SideBar2/SideBar3";
+import SideBar from "../../components/SideBarHome/SideBar";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -38,7 +38,7 @@ export default function Detail () {
   return (
     <div className=" bg-slate-50 ">
       <NavBar setNav={setNav} nav={nav}/>
-      <SideBar3 nav={nav} setNav={setNav}/>
+      <SideBar nav={nav} setNav={setNav}/>
       {
         !id || Object.keys(news).length === 0 || related.length === 0
         ? <Loader/>
@@ -73,9 +73,9 @@ export default function Detail () {
               <div className="flex md:flex-row flex-col-reverse">
                 <div className="basis-1/2 flex flex-col">
                 <span className="basis-1/2 text-2xl italic font-semibold">Relacionados:</span>
-                  {related.map((e) => {
+                  {related.map((e, i) => {
                     return(
-                      <div className="basis-1/4 w-[80%]">
+                      <div key={i} className="basis-1/4 w-[80%]">
                         <DetailCard id={e.id} tag={e.tag.name} title={e.title} image={e.image} category={e.tag.name}/>
                       </div>
                     )

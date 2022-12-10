@@ -9,10 +9,14 @@ export default function MiddleComponent() {
 
   useEffect(() => {
     const getDolar = async () => {
-      const data = await axios.get(
-        "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
-      );
-      setDolar(data.data);
+      try {
+        const data = await axios.get(
+          "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
+        );
+        setDolar(data.data);
+      } catch (error) {
+        console.log(error)
+      }
     };
     getDolar();
   }, []);
@@ -26,8 +30,8 @@ export default function MiddleComponent() {
         <div className="py-2 md:p-0">
           <IconLogo/>
         </div>
-        <div className="flex flex-row pt-4 md:pt-0 md:px-0">
-          <div className="md:hidden basis-[40%]">
+        <div className="flex flex-row justify-center pt-4 md:pt-0 md:px-0">
+          <div className="hidden sm:flex justify-center md:hidden basis-[40%]">
             <Weather/>
           </div>
           <div className="basis-[60%]">

@@ -10,13 +10,13 @@ const PrincipalPostCarousel = ({ images, id=false, tag=false }) => {
       <Carousel slideInterval={5000}>
         {
           imagesArray?.length &&
-            imagesArray.map((i) => {
+            imagesArray.map((p, i) => {
               return (
-                <Link href={`/detalle/${id}?tag=${tag}`}>
+                <Link key={i} href={`/detalle/${id}?tag=${tag}`}>
                 <img
                   className="w-full h-[250px] sm:h-[200px] md:h-[230px] lg:h-[280px]" 
                   key={i}
-                  src={i}
+                  src={p}
                   alt="IMG"
                 />
                 </Link>

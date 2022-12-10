@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ListNews from '../../../components/ListComponentsDashboard/ListNews'
 import NewForm from '../../../components/PostNewsFormik/NewForm'
-import SideBar from '../../../components/SideBar/SideBar'
+import SideBar from '../../../components/SideBarAdmin/SideBar'
 
 const postNews = () => {
   const [updateData, setUpdateData] = useState({})

@@ -7,8 +7,7 @@ import Footer from "../components/Footer/Footer";
 import { useState } from "react";
 import NextNProgress from "nextjs-progressbar";
 import MiddleComponent from "../components/MiddleComponent";
-import SideBar2 from "../components/SideBar2/SideBar2";
-import SideBar3 from "../components/SideBar2/SideBar3";
+import SideBar from "../components/SideBarHome/SideBar";
 
 
 
@@ -23,7 +22,7 @@ export default function Home () {
       </Head>
       <NextNProgress />
       <NavBar setNav={setNav} nav={nav}/>
-      <SideBar3 nav={nav} setNav={setNav}/>
+      <SideBar nav={nav} setNav={setNav}/>
       <MiddleComponent/>
       <TopNewSection setLoader={setLoader}/>
       <TrendingSection loader={loader}/>

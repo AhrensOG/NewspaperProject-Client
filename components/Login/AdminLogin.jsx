@@ -3,6 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from '../../context/authContext'
+import Alert from '../Alert/Alert'
 
 const Login = () => {
 
@@ -26,17 +27,20 @@ const router = useRouter()
       await signIn(credentials.email, credentials.password)
       const data = await axios.post("/api/auth/login", credentials)
       if (data.status === 200) {
+        Alert('Bienvenido!', 'success', 'A trabajar!')
         router.push("/admin/dashboard/noticias")
       }
       
     } catch (error) {
-      console.log(e.message) 
+      if (error.code === 'auth/user-not-found') {
+        Alert('Ups...', 'error', 'Credenciales Invalidas')
+      }
     }
   }
 
   return (
-    <div>
-      <form onSubmit={handlerSubmit}>
+    <div className='px-6 py-12'>
+      <form className='flex flex-col items-center' onSubmit={handlerSubmit}>
         <input type="email" name='email' placeholder='email' onChange={handleChange} />
         <input type="password" name='password' placeholder='password' onChange={handleChange}/>
         <button>Log In</button>

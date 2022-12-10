@@ -9,11 +9,15 @@ const Weather = () => {
 
   useEffect(() => {
     const getData = async () => {
+      try {
+        const getDataForIcon = await axios.get("https://api.openweathermap.org/data/2.5/weather?lat=-26.164876049999997&lon=-58.20088442916071&appid=6b6fda2e309bb1f06bbe93586ce35326")
+        setDataIcon(getDataForIcon.data)
+        const data = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=-26.18&longitude=-58.17&hourly=temperature_2m,apparent_temperature,precipitation&current_weather=true&timezone=auto&past_days=1`)
+        setWeather(data.data)
+      } catch (error) {
+        console.log(error)
+      }
 
-      const getDataForIcon = await axios.get("https://api.openweathermap.org/data/2.5/weather?lat=-26.164876049999997&lon=-58.20088442916071&appid=6b6fda2e309bb1f06bbe93586ce35326")
-      setDataIcon(getDataForIcon.data)
-      const data = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=-26.18&longitude=-58.17&hourly=temperature_2m,apparent_temperature,precipitation&current_weather=true&timezone=auto&past_days=1`)
-      setWeather(data.data)
     }
     getData()
 

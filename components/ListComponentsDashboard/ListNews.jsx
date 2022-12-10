@@ -111,7 +111,7 @@ const ListNews = ({ setUpdateData, refreshList, setRefreshList }) => {
                     })
                   }
                 </div>
-              : <p>No se encontraron noticias</p>
+              : <div>No se encontraron noticias</div>
 
               : allNews?.length > 0 
               ? <div className='flex flex-col gap-6'>
@@ -121,7 +121,7 @@ const ListNews = ({ setUpdateData, refreshList, setRefreshList }) => {
                     })
                   }
                 </div>
-              : <p>No se encontraron noticias</p>
+              : <div>No se encontraron noticias</div>
         }
       </div>
     </div>

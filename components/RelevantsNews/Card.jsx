@@ -4,7 +4,7 @@ import Carrousel from "../Carrousel/Carousel";
 
 export default function Card ({image, title, tag, id}) {
   return (
-    <div className="">
+    <div key={id} className="">
       <div className="pb-2 ">
           <Carrousel images={image} id={id} tag={tag}/>
       </div>

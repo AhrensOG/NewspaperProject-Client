@@ -11,26 +11,42 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 export default function ImportantSection ({ loader }) {
 
   const [news, setNews] = useState([]);
-  const primaryPost = [];
-  const secondaryPost = [];
+  // const primaryPost = [];
+  // const secondaryPost = [];
+  const filteredNews = [];
   const upperSection = [];
   const leftColumnSection = [];
   const middleSection = [];
   const rightColumnSection = [];
 
+  const [secondPlain, setSecondPlain] = useState([]);
+  const [thirdPlain, setThirdPlain] = useState([]);
+
   for (let i = 0; i < news?.length; i++) {
-    if(i === 0) primaryPost.push(news[i]);
-    if(i === 1) secondaryPost.push(news[i]);
-    if(i >= 2 && i <= 4 ) upperSection.push(news[i]);
-    if(i >= 5 && i <= 7) leftColumnSection.push(news[i]);
-    if(i >= 8 && i <= 10) middleSection.push(news[i]);
-    if(i >= 11 && i <= 13) rightColumnSection.push(news[i]);
+    if(news[i].title !== secondPlain[0].title && news[i].title !== thirdPlain[0].title) {
+      filteredNews.push(news[i])
+    }
+  }
+
+  for (let i = 0; i < filteredNews.length; i++) {
+    if(i >= 0 && i <= 2 ) upperSection.push(news[i]);
+    if(i >= 3 && i <= 5) leftColumnSection.push(news[i]);
+    if(i >= 6 && i <= 8) middleSection.push(news[i]);
+    if(i >= 9 && i <= 11) rightColumnSection.push(news[i]);
   }
 
   useEffect(()=> {
     const getImportants = async () => {
-      const json = await axios.get(`${SERVER_URL}/post?tag=Importante&limit=14`)
-      setNews(json.data)
+      try {
+        const json = await axios.get(`${SERVER_URL}/post?tag=Importante&limit=14`)
+        const plain2 = await axios.get(`${SERVER_URL}/post/plain?secondPlain=true`)
+        const plain3 = await axios.get(`${SERVER_URL}/post/plain?thirdPlain=true`)
+        setNews(json.data)
+        setSecondPlain(plain2.data)
+        setThirdPlain(plain3.data)
+      } catch (error) {
+        console.log(error)
+      }
     }
     getImportants()
   }, [])
@@ -38,7 +54,7 @@ export default function ImportantSection ({ loader }) {
   return (
     <div className="lg:px-16 md:px-10 px-4 pb-16">
       {
-        news?.length === 0 || primaryPost?.length === 0 || secondaryPost?.length === 0 || upperSection?.length === 0 || leftColumnSection?.length === 0 || middleSection?.length === 0 || rightColumnSection?.length === 0 || !loader
+        news?.length === 0 || secondPlain?.length === 0 || thirdPlain?.length === 0 || upperSection?.length === 0 || leftColumnSection?.length === 0 || middleSection?.length === 0 || rightColumnSection?.length === 0 || !loader
         ? <div></div>
         : <div>
             <NextNProgress color="#3b82f1"/>
@@ -49,8 +65,10 @@ export default function ImportantSection ({ loader }) {
             {/* UPPER SECTION */}
             <div className="flex flex-col sm:flex-row gap-10 pt-6 ">
               {
-                upperSection?.length !== 0 && upperSection?.map(( p ) => {
-                return <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                upperSection?.length !== 0 && upperSection?.map(( p, i ) => {
+                return <div key={i}>
+                  <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                </div> 
               }) 
               }
             </div>
@@ -60,22 +78,26 @@ export default function ImportantSection ({ loader }) {
               {/* LEFT COLUMN */}
               <div className="basis-[32%]">
                 {
-                  leftColumnSection?.length !== 0 && leftColumnSection?.map(( p ) => {
-                    return <div className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
+                  leftColumnSection?.length !== 0 && leftColumnSection?.map(( p, i ) => {
+                    return <div key={i} className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
                   })
                 }
               </div>
               {/* PRIMARY POST */}
               <div className="basis-[68%]">
-                <PrincipalImportantNewPost key={primaryPost[0]?.id} id={primaryPost[0]?.id} tag={primaryPost[0]?.tag.name} title={primaryPost[0]?.title} image={primaryPost[0]?.image} description={primaryPost[0]?.description} category={primaryPost[0]?.category}/>
+                <PrincipalImportantNewPost key={secondPlain[0]?.id} id={secondPlain[0]?.id} tag={secondPlain[0]?.tag.name} title={secondPlain[0]?.title} image={secondPlain[0]?.image} description={secondPlain[0]?.description} category={secondPlain[0]?.category}/>
               </div>
 
             </div>
             {/* MIDDLE POST ROW */}
             <div className="flex flex-col sm:flex-row gap-10 pt-[1rem]">
               {
-                middleSection?.length !== 0 && middleSection?.map(( p ) => {
-                return <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                middleSection?.length !== 0 && middleSection?.map(( p, i ) => {
+                return  ( 
+                <div key={i}>
+                  <Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} />
+                </div>  
+                )
               }) 
               }
             </div>
@@ -85,14 +107,14 @@ export default function ImportantSection ({ loader }) {
               {/* RIGHT COLUMN */}
               <div className="basis-[32%]">
                 {
-                  rightColumnSection?.length !== 0 && rightColumnSection?.map(( p ) => {
-                    return <div className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
+                  rightColumnSection?.length !== 0 && rightColumnSection?.map(( p, i ) => {
+                    return <div key={i} className="pb-6"><Card key={p.title} id={p.id} tag={p.tag.name} image={p.image} title={p.title} /></div>
                   })
                 }
               </div>
               {/* SECONDARY POST */}
               <div className="basis-[68%]">
-                <PrincipalImportantNewPost key={secondaryPost[0]?.id} id={secondaryPost[0]?.id} tag={secondaryPost[0]?.tag.name} title={secondaryPost[0]?.title} image={secondaryPost[0]?.image} description={secondaryPost[0]?.description} category={secondaryPost[0]?.category}/>
+                <PrincipalImportantNewPost key={thirdPlain[0]?.id} id={thirdPlain[0]?.id} tag={thirdPlain[0]?.tag.name} title={thirdPlain[0]?.title} image={thirdPlain[0]?.image} description={thirdPlain[0]?.description} category={thirdPlain[0]?.category}/>
               </div>
             </div>
           </div>

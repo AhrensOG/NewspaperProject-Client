@@ -72,7 +72,7 @@ const NewForm = ({ data, setRefreshList }) => {
     if(data?.id) { value.categories = categories } 
     else { value.category = categories }
     value.description = content
-
+    
     try {
       if(content.length === 0) return Alert('Ups...', 'question', 'Debes ingresar una descripcion');
 
@@ -104,7 +104,7 @@ const NewForm = ({ data, setRefreshList }) => {
       :data.status === 200 && Alert('Excelente', 'success', 'La noticia fue actualizada correctamente'); 
 
     } catch (error) {
-      Alert('Ups...', 'error', `Ocurrio un error: ${error?.response?.data}`)
+      Alert('Ups...', 'error', `Ocurrio un error: ${error?.response?.data || 'Intente mas tarde...'}`)
     }
   }
 
@@ -178,7 +178,7 @@ const NewForm = ({ data, setRefreshList }) => {
       }}
     >
     {({errors}) => (
-      <Form className='sticky top-[-25rem]'>
+      <Form className='sticky top-[-25rem] w-[700px]'>
         
         <div className='flex flex-col justify-center items-center px-4 py-2 pb-8 divide-y divide-blue-200'>
           <h1 className='text-4xl font-roboto w-full text-center p-4'>CREAR/ACTUALIZAR</h1>
