@@ -18,7 +18,7 @@ export default function Card ({buy1, buy2, sell1, sell2, variation1, variation2,
         </div>
         <div>
           <span className="flex justify-center text-gray-500 font-roboto text-lg tracking-wide">Variacion</span>
-          <span className="flex justify-center text-[#18937e] font-roboto text-lg">{variation}</span>
+          <span className="flex justify-center text-[#18937e] font-roboto text-lg">{typeof variation !== 'string' ? '...' : variation }</span>
         </div>
       </div>
     )
