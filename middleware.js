@@ -5,7 +5,7 @@ export default async function middleware(req) {
   if (req.nextUrl.pathname.includes("/admin/dashboard/noticias")) {
     const data = req.cookies.get("adminCookie");
     if (!data) {
-      return NextResponse.redirect(new URL("/login", req.url));
+      return NextResponse.redirect(new URL("/login/admin", req.url));
     }
     try {
       const encoder = new TextEncoder();
