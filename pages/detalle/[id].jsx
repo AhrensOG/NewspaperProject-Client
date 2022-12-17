@@ -15,6 +15,7 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 export default function Detail () {
   const [nav, setNav] = useState(false);
+  const [date, setDate] = useState("")
 
   const router = useRouter();
   const { id, tag } = router.query;
@@ -25,10 +26,24 @@ export default function Detail () {
   useEffect(() => {
     const getRelateds = async () =>{
       if(id && tag) {
-        const json = await axios.get(`${SERVER_URL}/post/detail?id=${id}`)
-        setNews(json.data)
-        const data = await axios.get(`${SERVER_URL}/post?tag=${tag}&limit=4`)
-        setRelated(data.data)
+        try {
+          const json = await axios.get(`${SERVER_URL}/post/detail?id=${id}`)
+          setNews(json.data)
+          const data = await axios.get(`${SERVER_URL}/post?tag=${tag}&limit=4`)
+          setRelated(data.data)
+          const dateFiltered = []
+          if(json.data.createdAt) {
+            let dateArray = json.data.createdAt.split('');
+            dateArray.map((e) => {
+              if(dateFiltered.length < 10) {
+                dateFiltered.push(e)
+              }
+            })
+            setDate(dateFiltered)
+          }
+        } catch (e) {
+          console.log(e.message)
+        }
       }
     } 
     getRelateds()
@@ -49,9 +64,9 @@ export default function Detail () {
                 <Tag title={news?.tag?.name}/>
               </div>
               <div className="flex flex-row gap-4">
-                <span className="font-mono">Ivix09</span>
+                <span className="font-mono">Martín Ortíz</span>
                 <span className="font-mono">
-                  {news?.createdAt}
+                  {date}
                 </span>
               </div>
             </div>

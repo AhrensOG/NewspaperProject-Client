@@ -7,21 +7,20 @@ const AdminDashboardCarousel = ({ images }) => {
 
   return (
     <div className="h-[80px]">
-      <Carousel slideInterval={5000}>
-        {
-          imagesArray?.length &&
+      {imagesArray.length > 1 ? (
+        <Carousel slideInterval={5000}>
+          {imagesArray?.length &&
             imagesArray.map((i) => {
               return (
-                <img
-                  className='w-full h-[80px]' 
-                  key={i}
-                  src={i}
-                  alt="IMG"
-                />
+                <img className="w-full h-[80px]" key={i} src={i} alt="IMG" />
               );
-            })
-        }
-      </Carousel>
+            })}
+        </Carousel>
+      ) : (
+        <div>
+          <img className="w-full h-[80px]" src={images} alt="Img alone" />
+        </div>
+      )}
     </div>
   );
 };
