@@ -1,17 +1,16 @@
 import { Carousel } from "flowbite-react";
 import Link from "next/link";
 import React from "react";
-import { ArraySchema } from "yup";
 
 const Carrousel = ({ images, id = false, tag = false }) => {
-  const imagesArray = images.split(" ");
+  const imagesArray = images?.split(" ");
 
   return (
     <div className="h-[250px] sm:h-[130px] md:h-[150px] lg:h-[250px]">
-      {imagesArray.length > 1 ? (
+      {imagesArray?.length > 1 ? (
         <Carousel slideInterval={5000}>
           {imagesArray?.length &&
-            imagesArray.map((a, i) => {
+            imagesArray?.map((a, i) => {
               return (
                 <div key={i}>
                   <Link href={`/detalle/${id}?tag=${tag}`}>
@@ -28,7 +27,9 @@ const Carrousel = ({ images, id = false, tag = false }) => {
         </Carousel>
       ) : (
         <div>
-          <img className="w-full h-[250px] sm:h-[150px] lg:h-[250px] cursor-pointer" src={images} alt="Img alone" />
+          <Link href={`/detalle/${id}?tag=${tag}`}>
+            <img className="w-full h-[250px] sm:h-[150px] lg:h-[250px] cursor-pointer" src={images} alt="Img alone" />
+          </Link>
         </div>
       )}
     </div>
