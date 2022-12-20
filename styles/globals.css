@@ -25,9 +25,9 @@
     @apply text-sm
   }
   ol {
-    @apply list-disc
+    @apply list-disc pl-10
   }
   ul {
-    @apply list-decimal
+    @apply list-decimal pl-10
   }
 }
