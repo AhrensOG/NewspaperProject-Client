@@ -71,8 +71,8 @@ const NewForm = ({ data, setRefreshList }) => {
   const onSubmit = async (value, {resetForm})=> {
     if(data?.id) { value.categories = categories } 
     else { value.category = categories }
-    value.description = content
-    
+    value.content = content
+    console.log(value.content)
     try {
       if(content.length === 0) return Alert('Ups...', 'question', 'Debes ingresar una descripcion');
 
