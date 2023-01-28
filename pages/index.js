@@ -19,6 +19,7 @@ export default function Home () {
     <div className="bg-slate-50">
       <Head>
         <title>Newspaper | Home</title>
+        <link rel="icon" href="/Logo.png" />
       </Head>
       <NextNProgress />
       <NavBar setNav={setNav} nav={nav}/>
