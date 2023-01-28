@@ -55,8 +55,8 @@ const SideBar = ({ nav, setNav }) => {
       <div
         className={
           nav
-            ? "fixed left-0 top-0 w-[75%] sm:w-[50%] h-screen bg-slate-50 p-10 ease-in duration-500"
-            : "z-10 fixed left-[-200%] top-0 p-10 ease-in duration-500"
+            ? "fixed left-0 top-0 w-[75%] md:w-[45%] sm:w-[60%] h-screen bg-slate-50 p-6 sm:p-10 ease-in duration-500"
+            : "z-10 fixed left-[-300%] top-0 p-10 ease-in duration-500"
         }
       >
         <div>
@@ -78,7 +78,7 @@ const SideBar = ({ nav, setNav }) => {
         <div className="py-4 flex flex-col">
           <div className="uppercase flex flex-col gap-3">
             <select name="categories" id="cat" onChange={(e) => handleChange(e)} className='uppercase block w-full px-4 py-3 text-base font-medium text-gray-700 border border-gray-300 rounded-lg bg-slate-50 focus:ring-cyan-300 focus:border-cyan-300 dark:text-white'>
-              <option value='default' className="text-lg ">Selecciona una categoría</option>
+              <option value='default' className="text-lg ">Categorías</option>
               {categories?.length > 0 &&
                 categories?.map((c) => {
                   return (
@@ -107,7 +107,7 @@ const SideBar = ({ nav, setNav }) => {
               <div></div>
             )}
           </div>
-          <div className="pt-[15rem]">
+          <div className="lg:pt-[15rem] md:pt-[13rem] pt-[11rem]">
             <p className="uppercase tracking-widest text-[#22d3ee]">
               Contactanos
             </p>
