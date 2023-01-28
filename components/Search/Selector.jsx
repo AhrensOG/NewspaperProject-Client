@@ -34,11 +34,11 @@ const Selector = () => {
           ? selected?.length > 20
             ? selected?.substring(0, 20) + "..."
             : selected
-          : "Noticia Seleccionada"}
+          : "Noticias"}
         <BiChevronDown size={20} className={`${open && "rotate-180"}`} />
       </div>
       <ul
-        className={`bg-slate-50 relative z-10 overflow-y-auto ${
+        className={`bg-slate-50 relative z-10 overflow-y-auto pl-0 ${
           open ? "max-h-60" : "max-h-0"
         } `}
       >
@@ -54,7 +54,7 @@ const Selector = () => {
         {news?.map((n) => (
           <div
             key={n?.title}
-            className={`flex flex-row gap-1 p-2 md:text-base sm:text-xs text-[11px] font-roboto uppercase hover:bg-sky-500 hover:text-white
+            className={`flex flex-row gap-1 p-2 md:text-base sm:text-xs text-[10px] font-roboto uppercase hover:bg-sky-500 hover:text-white
             ${
               n?.title?.toLowerCase() === selected?.toLowerCase() &&
               "bg-sky-600 text-white"
