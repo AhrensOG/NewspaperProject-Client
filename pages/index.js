@@ -18,7 +18,7 @@ export default function Home () {
   return(
     <div className="bg-slate-50">
       <Head>
-        <title>Newspaper | Home</title>
+        <title>OpinionFormoseña | Home</title>
         <link rel="icon" href="/Logo.png" />
       </Head>
       <NextNProgress />
