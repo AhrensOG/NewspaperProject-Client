@@ -5,6 +5,7 @@ import Card from "./Card";
 import Tag from "../Tag"
 import PrincipalImportantNewPost from "./PrincipalImportantNewPost";
 import NextNProgress from "nextjs-progressbar";
+import parse from 'html-react-parser'
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -85,7 +86,7 @@ export default function ImportantSection ({ loader }) {
               </div>
               {/* PRIMARY POST */}
               <div className="basis-[68%]">
-                <PrincipalImportantNewPost key={secondPlain[0]?.id} id={secondPlain[0]?.id} tag={secondPlain[0]?.tag.name} title={secondPlain[0]?.title} image={secondPlain[0]?.image} description={secondPlain[0]?.description} category={secondPlain[0]?.category}/>
+                <PrincipalImportantNewPost key={secondPlain[0]?.id} id={secondPlain[0]?.id} tag={secondPlain[0]?.tag.name} title={secondPlain[0]?.title} image={secondPlain[0]?.image} description={parse(secondPlain[0]?.description)} category={secondPlain[0]?.category}/>
               </div>
 
             </div>
@@ -114,7 +115,7 @@ export default function ImportantSection ({ loader }) {
               </div>
               {/* SECONDARY POST */}
               <div className="basis-[68%]">
-                <PrincipalImportantNewPost key={thirdPlain[0]?.id} id={thirdPlain[0]?.id} tag={thirdPlain[0]?.tag.name} title={thirdPlain[0]?.title} image={thirdPlain[0]?.image} description={thirdPlain[0]?.description} category={thirdPlain[0]?.category}/>
+                <PrincipalImportantNewPost key={thirdPlain[0]?.id} id={thirdPlain[0]?.id} tag={thirdPlain[0]?.tag.name} title={thirdPlain[0]?.title} image={thirdPlain[0]?.image} description={parse(thirdPlain[0]?.description)} category={thirdPlain[0]?.category}/>
               </div>
             </div>
           </div>
