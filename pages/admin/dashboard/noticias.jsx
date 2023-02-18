@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React, { useState } from 'react'
 import ListNews from '../../../components/ListComponentsDashboard/ListNews'
 import NewForm from '../../../components/PostNewsFormik/NewForm'
@@ -9,6 +10,10 @@ const postNews = () => {
 
   return (
     <div className='flex flex-row'>
+      <Head>
+        <title>OpinionFormoseña | AdminPanel</title>
+        <link rel="icon" href="/Logo.png" />
+      </Head>
       <div className='basis-[20%]'>
         <SideBar className='h-full'/>
       </div>
