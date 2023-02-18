@@ -7,6 +7,7 @@ import Card from '../../components/RelevantsNews/Card';
 import NextNProgress from "nextjs-progressbar";
 import Loader from '../../components/Loader';
 import SideBar from "../../components/SideBarHome/SideBar";
+import Head from 'next/head';
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -33,6 +34,10 @@ const Category = () => {
 
   return (
     <div>
+      <Head>
+        <title>OpinionFormoseña | Categorias</title>
+        <link rel="icon" href="/Logo.png" />
+      </Head>
       <NavBar setNav={setNav} nav={nav}/>
       <SideBar nav={nav} setNav={setNav}/>
       {

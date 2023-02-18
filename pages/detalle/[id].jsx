@@ -10,6 +10,7 @@ import DetailCard from "../../components/Detail/DetailCard";
 import parse from 'html-react-parser'
 import DetailCarousel from "../../components/Carrousel/DetailCarousel";
 import SideBar from "../../components/SideBarHome/SideBar";
+import Head from "next/head";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
@@ -52,6 +53,10 @@ export default function Detail () {
 
   return (
     <div className=" bg-slate-50 ">
+      <Head>
+        <title>OpinionFormoseña | Detalle</title>
+        <link rel="icon" href="/Logo.png" />
+      </Head>
       <NavBar setNav={setNav} nav={nav}/>
       <SideBar nav={nav} setNav={setNav}/>
       {

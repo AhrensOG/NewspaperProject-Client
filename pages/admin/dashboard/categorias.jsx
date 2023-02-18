@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React, { useState } from 'react'
 import DashboardCategory from '../../../components/DashboardCategories/DashboardCategory'
 import SideBar from '../../../components/SideBarAdmin/SideBar'
@@ -7,6 +8,10 @@ const categorias = () => {
   
   return (
     <div className='flex flex-row'>
+      <Head>
+        <title>OpinionFormoseña | AdminPanel</title>
+        <link rel="icon" href="/Logo.png" />
+      </Head>
       <div className='basis-[20%]'>
         <SideBar className='h-full'/>
       </div>
