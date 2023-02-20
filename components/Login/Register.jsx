@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import * as Yup from 'yup'
 import { useAuth } from '../../context/authContext'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import Alert from '../Alert/Alert'
 
 
 const Register = () => {
@@ -17,10 +19,15 @@ const Register = () => {
   const onSubmit = async (value, {resetForm}) => {
     try {
       await signUp(value.email, value.password)
+      const data = await axios.post('/api/auth/register', value)
+      if (data.status === 200) {
+        Alert('Bienvenido!', 'success', 'Saludos!')
+      }
       resetForm()
       router.push("/")
     } catch (error) {
       console.log(error.message)
+      Alert('Ups...', 'error', error.message)
     }
   }
 
@@ -50,7 +57,9 @@ const Register = () => {
             <ErrorMessage name='password' component={()=> (
               <div> {errors.password} </div>
             )}/>
-            <Field type='submit' name='submit' value='Registrarme'/>
+            <div className='flex flex-row justify-center'>
+              <Field className='p-1 hover:bg-white hover:border hover:border-blue-400 hover:text-blue-400 w-full bg-blue-400 border border-blue-400 tracking-widest text-white font-roboto text-lg' type='submit' name='submit' value='Registrarme'/>
+            </div>
           </Form>
         )}
       </Formik>
