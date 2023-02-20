@@ -25,16 +25,14 @@ const router = useRouter()
     try {
       e.preventDefault()
       await signIn(credentials.email, credentials.password)
-      const data = await axios.post("/api/auth/login", credentials)
+      const data = await axios.post("/api/auth/admin/login", credentials)
       if (data.status === 200) {
         Alert('Bienvenido!', 'success', 'A trabajar!')
         router.push("/admin/dashboard/noticias")
       }
-      
     } catch (error) {
-      if (error.code === 'auth/user-not-found') {
-        Alert('Ups...', 'error', 'Credenciales Invalidas')
-      }
+      console.log(error)
+      Alert('Ups...', 'error', error?.response?.data || error.message)
     }
   }
 

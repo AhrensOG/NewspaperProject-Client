@@ -9,7 +9,7 @@ const Logout = () => {
   const handleLogout = async () => {
     try {
       await logOut()
-      await axios.post("/api/auth/logout")
+      await axios.post("/api/auth/admin/logout")
       router.push('/login/admin')
     } catch (e) {
       console.log(e)
