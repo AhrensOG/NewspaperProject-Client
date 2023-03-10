@@ -72,7 +72,8 @@ const NewForm = ({ data, setRefreshList }) => {
     if(data?.id) { value.categories = categories } 
     else { value.category = categories }
     value.content = content
-    console.log(value.content)
+    value.description = content
+    
     try {
       if(content.length === 0) return Alert('Ups...', 'question', 'Debes ingresar una descripcion');
 
