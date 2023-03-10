@@ -27,16 +27,6 @@ const firebaseConfig = {
   measurementId
 };
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAi_zGY7hFvu3tiouCu94dfrvrEpdvizm0",
-//   authDomain: "newspaper-project-storage.firebaseapp.com",
-//   projectId: "newspaper-project-storage",
-//   storageBucket: "newspaper-project-storage.appspot.com",
-//   messagingSenderId: "153687635436",
-//   appId: "1:153687635436:web:48521287236535b20afcc9",
-//   measurementId: "G-MZEKJ3ZXH5"
-// };
-
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
