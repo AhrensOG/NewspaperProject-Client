@@ -18,7 +18,7 @@ const PrincipalPostCard = ({ title, subTitle = false, image, category, tag, id }
       </div>
       {
         subTitle 
-        ? <div className='pt-2'> <h4 className='text-sm font-light lg:text-xl'>{ subTitle }</h4> </div>
+        ? <div className='pt-2'> <h4 className='text-sm font-light lg:text-xl break-all'>{ subTitle }</h4> </div>
         : <div></div>
       }
     </div>
