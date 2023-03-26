@@ -32,16 +32,17 @@ export default function Detail () {
           setNews(json.data)
           const data = await axios.get(`${SERVER_URL}/post?tag=${tag}&limit=4`)
           setRelated(data.data)
-          const dateFiltered = []
-          if(json.data.createdAt) {
-            let dateArray = json.data.createdAt.split('');
-            dateArray.map((e) => {
-              if(dateFiltered.length < 10) {
-                dateFiltered.push(e)
-              }
-            })
-            setDate(dateFiltered)
-          }
+          // const dateFiltered = []
+          // if(json.data.createdAt) {
+          //   let dateArray = json.data.createdAt.split('');
+          //   dateArray.map((e) => {
+          //     if(dateFiltered.length < 10) {
+          //       dateFiltered.push(e)
+          //     }
+          //   })
+          //   setDate(dateFiltered)
+          // }
+          setDate(json.data.date)
         } catch (e) {
           console.log(e.message)
         }
@@ -69,7 +70,6 @@ export default function Detail () {
                 <Tag title={news?.tag?.name}/>
               </div>
               <div className="flex flex-row gap-4">
-                <span className="font-mono">Martín Ortíz</span>
                 <span className="font-mono">
                   {date}
                 </span>
