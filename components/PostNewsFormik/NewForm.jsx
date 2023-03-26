@@ -11,8 +11,18 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_BASE_URL;
 
 const NewForm = ({ data, setRefreshList }) => {
   const action = data?.id? 'put' : 'post'
-  let currentData = data || { title: "", subTitle: "", description: "", image: "", categories: [], tag:"", type:"", isAd:"" }
-
+  let currentData;
+  // = data || { title: "", subTitle: "", description: "", date: "", image: "", categories: [], tag:"", type:"", isAd:"" }
+  if(data) {
+    if(data.date !== null) {
+      currentData = data;
+    }else {
+      data.date = '';
+      currentData = data;
+    }
+  }else {
+    currentData = { title: "", subTitle: "", description: "", date: "", image: "", categories: [], tag:"", type:"", isAd:"" }
+  }
   const placeholder = 'Descripcion de la noticia...';
   const { quill, quillRef } = useQuill({placeholder});
 
@@ -153,15 +163,13 @@ const NewForm = ({ data, setRefreshList }) => {
 
   const schema = Yup.object().shape({
     title: Yup.string()
-      .min(10, 'Muy Corto')
       .required('Ingresa un titulo'),
     subTitle: Yup.string()
-      .min(20, 'Muy Corto')
       .required('Ingresa un subtitulo'),
     type: Yup.string()
-    .required('Seleciona una opcion'),
+      .required('Seleciona una opcion'),
     tag: Yup.string()
-    .required('Seleciona una opcion'),
+      .required('Seleciona una opcion'),
   });
 
   return (
@@ -200,6 +208,7 @@ const NewForm = ({ data, setRefreshList }) => {
             ? setErrorClassSubtitle('border-red-700')
             : setErrorClassSubtitle('border-gray-500')
           }
+          <Field type="text" id='date' name='date' placeholder='Ingrese una fecha' className={`basis-[90%] border rounded focus:outline-none focus:border-blue-200 focus:ring-1 p-2`}/>
 
           <div style={{ width: '100%'}} className='h-auto' >
             <div ref={quillRef} />
