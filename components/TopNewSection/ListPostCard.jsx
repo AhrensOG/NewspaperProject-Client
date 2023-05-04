@@ -7,7 +7,7 @@ const ListPostCard = ({ title, subTitle = false, image, tag, id }) => {
         <Link href={`/detalle/${id}?tag=${tag}`}>
           <h1 className='text-2xl leading-7 sm:text-[0.845rem] sm:leading-4 md:text-sm lg:text-base lg:leading-5 font-custom font-semibold break-normal tracking-tighter hover:underline underline-offset-1 cursor-pointer'>{title}</h1>
         </Link>
-        <span className='text-[10px] font-thin'>CHAINED</span>
+        <span className='text-[10px] font-thin'>OPINION</span>
       </div>
       <div className='basis-[30%] hover:cursor-pointer'>
         <Link href={`/detalle/${id}?tag=${tag}`}>
