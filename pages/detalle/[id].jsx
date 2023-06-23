@@ -23,6 +23,7 @@ export default function Detail () {
 
   const [related, setRelated] = useState([])
   const [news, setNews] = useState({})
+  const imagesArray = news?.image?.split(" ")
 
   useEffect(() => {
     const getRelateds = async () =>{
@@ -57,6 +58,9 @@ export default function Detail () {
       <Head>
         <title>OpinionFormoseña | Detalle</title>
         <link rel="icon" href="/Logo.png" />
+        <meta property="og:title" content={`Post Number ${id}`}/>
+        <meta property="og:description" content={`Contenido de OpinionFormoseña.com.ar`}/>
+        <meta property="og:image" content={imagesArray && imagesArray[0]}/>
       </Head>
       <NavBar setNav={setNav} nav={nav}/>
       <SideBar nav={nav} setNav={setNav}/>
